@@ -1,0 +1,47 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "9f4d2a25bf0979622691310a3a0fe580",
+    "packages": [
+        {
+            "name": "alterfw/common",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alterfw/common.git",
+                "reference": "f763c0595f6bfa9572508acb302a45c1c88317fd"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Alter\\Common\\": "src/",
+                    "Alter\\Common\\Util\\": "src/util/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sergio Vilar",
+                    "email": "sergiovilar.r@gmail.com"
+                }
+            ],
+            "description": "Common classes to all Alter projects",
+            "time": "2015-07-27 03:59:32"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "alterfw/common": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
