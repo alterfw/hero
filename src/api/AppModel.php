@@ -1,10 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergiovilar
- * Date: 02/05/14
- * Time: 10:48 PM
- */
+
+namespace Alter\Hero\API;
 
 abstract class AppModel {
 
@@ -92,13 +88,13 @@ abstract class AppModel {
 
         $supports = array();
         $wp_fields = array(
-        	'title', 
-        	'editor', 
-        	'thumbnail', 
-        	'excerpt', 
-        	'comments', 
-        	'revisions', 
-        	'trackbacks', 
+        	'title',
+        	'editor',
+        	'thumbnail',
+        	'excerpt',
+        	'comments',
+        	'revisions',
+        	'trackbacks',
         	'page-attributes'
         );
 
@@ -174,4 +170,4 @@ abstract class AppModel {
 
     }
 
-} 
+}

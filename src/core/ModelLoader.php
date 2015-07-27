@@ -1,5 +1,6 @@
 <?php
 
+namespace Alter\Hero\Core;
 use Alter\Common\Loader;
 
 /**

@@ -1,10 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergiovilar
- * Date: 02/05/14
- * Time: 10:56 PM
- */
+
+namespace Alter\Hero\Exceptions;
 
 class NoPostFoundException extends Exception{
 

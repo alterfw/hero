@@ -1,10 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergiovilar
- * Date: 03/05/14
- * Time: 10:55 AM
- */
+
+namespace Alter\Hero\Util;
 
 class RegisterMetabox {
 
@@ -34,13 +30,13 @@ class RegisterMetabox {
 
         $meta_boxes = array();
         $wp_fields = array(
-        	'title', 
-        	'editor', 
-        	'thumbnail', 
-        	'excerpt', 
-        	'comments', 
-        	'revisions', 
-        	'trackbacks', 
+        	'title',
+        	'editor',
+        	'thumbnail',
+        	'excerpt',
+        	'comments',
+        	'revisions',
+        	'trackbacks',
         	'page-attributes'
         );
 
@@ -217,4 +213,4 @@ class RegisterMetabox {
 
     }
 
-} 
+}

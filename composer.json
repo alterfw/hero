@@ -1,23 +1,34 @@
 {
-    "name": "alterfw/hero",
-    "description": "Alter's model binding",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Sergio Vilar",
-            "email": "sergiovilar.r@gmail.com"
-        }
-    ],
-    "minimum-stability": "dev",
-    "require": {},
-    "repositories": [
-        {
-            "url": "https://github.com/alterfw/common.git",
-            "type": "git"
-        }
-    ],
-    "require": {
-        "alterfw/common": "dev-master"
+  "name": "alterfw/hero",
+  "description": "Alter's model binding",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sergio Vilar",
+      "email": "sergiovilar.r@gmail.com"
     }
+  ],
+  "minimum-stability": "dev",
+  "require": {},
+  "repositories": [
+    {
+      "url": "https://github.com/alterfw/common.git",
+      "type": "git"
+    }
+  ],
+  "require": {
+    "alterfw/common": "dev-master",
+    "alterfw/meta-box": "dev-master",
+    "alterfw/wordpress-for-developers": "dev-master"
+  },
+  "autoload": {
+    "files": ["src/Hero.php"],
+    "psr-4": {
+      "Alter\\Hero\\API\\": "src/api/",
+      "Alter\\Hero\\Core\\": "src/core/",
+      "Alter\\Hero\\Exceptions\\": "src/exceptions/",
+      "Alter\\Hero\\Util\\": "src/utility/"
+    }
+  }
 
 }

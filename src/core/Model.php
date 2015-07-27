@@ -1,10 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Desenvolvimento
- * Date: 07/07/14
- * Time: 18:04
- */
+
+namespace Alter\Hero\Core;
 
 class Model {
 
@@ -141,7 +137,7 @@ class Model {
 
 			$this->last_query = $attrs;
 			$this->paginated = true;
-			$qr = new WP_Query($attrs);			
+			$qr = new WP_Query($attrs);
 
 			if(!$qr->have_posts()){
 				throw new NoPostFoundException();
@@ -249,7 +245,7 @@ class Model {
 
 		$attrs = $this->last_query;
 		$actual_page = $this->paginate_page;
-		$limit = $this->paginate_limit;		
+		$limit = $this->paginate_limit;
 
 		$attrs['posts_per_page'] = '-1';
 		$attrs['paged'] = '1';
@@ -277,7 +273,7 @@ class Model {
 		if($actual_page == 1) $page_previous['link'] = false;
 		if($actual_page == $number_of_pages) $page_next['link'] = false;
 
-		if($type == 'number_links'){			
+		if($type == 'number_links'){
 
 			array_push($pages, $page_previous);
 			for($i = 1; $i <= $number_of_pages; $i++){
@@ -291,12 +287,12 @@ class Model {
 				));
 
 			}
-			array_push($pages, $page_next);			
+			array_push($pages, $page_next);
 
 		}else{
 			array_push($pages, $page_previous);
 			array_push($pages, $page_next);
-		}	
+		}
 
 		return $pages;
 
@@ -379,4 +375,4 @@ class Model {
     	return $this->appModel;
     }
 
-} 
+}
