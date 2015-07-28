@@ -1,6 +1,5 @@
 <?php
 
-namespace Hero;
 use Hero\Core\App;
 use Hero\Core\ModelLoader;
 
