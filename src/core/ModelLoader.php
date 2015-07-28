@@ -1,8 +1,8 @@
 <?php
 
-namespace Alter\Hero\Core;
+namespace Hero\Core;
 use Alter\Common\Loader;
-use Alter\Hero\Util\RegisterMetabox;
+use Hero\Util\RegisterMetabox;
 
 /**
 * Class Loader

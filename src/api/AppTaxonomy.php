@@ -1,7 +1,5 @@
 <?php
 
-namespace Alter\Hero\API;
-
 class AppTaxonomy{
 
     private $key;

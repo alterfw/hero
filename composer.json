@@ -28,9 +28,9 @@
       "src/api/AppTaxonomy.php"
     ],
     "psr-4": {
-      "Alter\\Hero\\Core\\": "src/core/",
-      "Alter\\Hero\\Exceptions\\": "src/exceptions/",
-      "Alter\\Hero\\Util\\": "src/utility/"
+      "Hero\\Core\\": "src/core/",
+      "Hero\\Exceptions\\": "src/exceptions/",
+      "Hero\\Util\\": "src/utility/"
     }
   }
 

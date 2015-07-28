@@ -1,6 +1,6 @@
 <?php
 
-namespace Alter\Hero\Exceptions;
+namespace Hero\Exceptions;
 
 class NoPostFoundException extends Exception{
 

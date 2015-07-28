@@ -1,6 +1,6 @@
 <?php
 
-namespace Alter\Hero\Core;
+namespace Hero\Core;
 
 class PostObject {
 

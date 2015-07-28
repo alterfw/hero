@@ -1,8 +1,8 @@
 <?php
 
-namespace Alter;
-use Alter\Hero\Core\App;
-use Alter\Hero\Core\ModelLoader;
+namespace Hero;
+use Hero\Core\App;
+use Hero\Core\ModelLoader;
 
 class Hero {
 

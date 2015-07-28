@@ -1,6 +1,6 @@
 <?php
 
-namespace Alter\Hero\Util;
+namespace Hero\Util;
 
 class RegisterMetabox {
 
