@@ -22,9 +22,12 @@
     "alterfw/wordpress-for-developers": "dev-master"
   },
   "autoload": {
-    "files": ["src/Hero.php"],
+    "files": [
+      "src/Hero.php",
+      "src/api/AppModel.php",
+      "src/api/AppTaxonomy.php"
+    ],
     "psr-4": {
-      "Alter\\Hero\\API\\": "src/api/",
       "Alter\\Hero\\Core\\": "src/core/",
       "Alter\\Hero\\Exceptions\\": "src/exceptions/",
       "Alter\\Hero\\Util\\": "src/utility/"

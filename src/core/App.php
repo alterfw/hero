@@ -10,7 +10,7 @@ class App {
 	public $option;
 
 	public function __construct(){
-		$this->option = new stdClass();
+		$this->option = new \stdClass();
 	}
 
 	public function registerModel($model){

@@ -1,7 +1,5 @@
 <?php
 
-namespace Alter\Hero\API;
-
 abstract class AppModel {
 
     private $post_type;

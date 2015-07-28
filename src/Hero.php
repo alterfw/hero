@@ -1,6 +1,8 @@
 <?php
 
 namespace Alter;
+use Alter\Hero\Core\App;
+use Alter\Hero\Core\ModelLoader;
 
 class Hero {
 
@@ -30,6 +32,7 @@ class Hero {
     require_once ALTER_VENDOR . "/meta-box/meta-box.php";
 
     self::$app = new App();
+    var_dump('opa');
     new ModelLoader(self::$app);
 
   }
