@@ -2,6 +2,7 @@
 
 namespace Alter\Hero\Core;
 use Alter\Common\Loader;
+use Alter\Hero\Util\RegisterMetabox;
 
 /**
 * Class Loader

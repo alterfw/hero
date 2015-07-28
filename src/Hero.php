@@ -11,8 +11,8 @@ class Hero {
   public function __construct() {
 
     // Constants
-    define('ALTER', __DIR__ . "/..");
-    define('ALTER_VENDOR', ALTER . "/..");
+    if(!defined('ALTER')) define('ALTER', __DIR__ . "/..");
+    if(!defined('ALTER_VENDOR')) define('ALTER_VENDOR', ALTER . "/..");
 
     if(!defined('ASSETS_PATH')) define('ASSETS_PATH', get_bloginfo('template_url'));
     if(!defined('APPLICATION_PATH')) define('APPLICATION_PATH', get_template_directory());
@@ -32,7 +32,6 @@ class Hero {
     require_once ALTER_VENDOR . "/meta-box/meta-box.php";
 
     self::$app = new App();
-    var_dump('opa');
     new ModelLoader(self::$app);
 
   }
