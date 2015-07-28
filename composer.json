@@ -9,15 +9,8 @@
     }
   ],
   "minimum-stability": "stable",
-  "require": {},
-  "repositories": [
-    {
-      "url": "https://github.com/alterfw/common.git",
-      "type": "git"
-    }
-  ],
   "require": {
-    "alterfw/common": "dev-master",
+    "alterfw/common": "0.1.x",
     "alterfw/meta-box": "dev-master",
     "alterfw/wordpress-for-developers": "dev-master"
   },
