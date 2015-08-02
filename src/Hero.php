@@ -17,8 +17,8 @@ class Hero {
     if(!defined('APPLICATION_PATH')) define('APPLICATION_PATH', get_template_directory());
 
     $path = explode('wp-content', realpath(ALTER_VENDOR . "/meta-box/"));
-    define('RWMB_URL', get_site_url().'/wp-content'.$path[1].'/');
-    define('RWMB_DIR', ALTER_VENDOR . "/meta-box/" );
+    if(!defined('RWMB_URL')) define('RWMB_URL', get_site_url().'/wp-content'.$path[1].'/');
+    if(!defined('RWMB_DIR')) define('RWMB_DIR', ALTER_VENDOR . "/meta-box/" );
 
     // Assets constants
     if(!defined('ALTER_IMG')) define('ALTER_IMG', ASSETS_PATH . "/img");
