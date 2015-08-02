@@ -126,7 +126,7 @@ class Model {
 			}
 
 			if(!empty($attrs['p'])){
-				return new PostObject(get_post($attrs['p']), $this->appModel);
+				return new Post(get_post($attrs['p']), $this->appModel);
 			}
 
 			if($this->paginate_limit)
@@ -149,7 +149,7 @@ class Model {
 
 					$qr->the_post();
 
-					$obj = new PostObject(get_post(get_the_ID()), $this->appModel);
+					$obj = new Post(get_post(get_the_ID()), $this->appModel);
 					array_push($posts, $obj);
 
 				}

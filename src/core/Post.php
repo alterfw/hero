@@ -2,7 +2,7 @@
 
 namespace Hero\Core;
 
-class PostObject {
+class Post {
 
   public function __construct($postObject, $model){
 
@@ -29,7 +29,7 @@ class PostObject {
     }
 
     // Author
-    $author = new stdClass();
+    $author = new \stdClass();
     foreach(array('ID', 'display_name', 'nickname', 'first_name', 'last_name', 'description', 'email') as $field){
       $author->{$field} = get_the_author_meta( $field, $this->author );
     }
@@ -103,7 +103,7 @@ class PostObject {
       $this->children = array();
 
       foreach($children as $child){
-        array_push($this->children, new PostObject($child, $model));
+        array_push($this->children, new Post($child, $model));
       }
 
     }
@@ -111,7 +111,7 @@ class PostObject {
     // Set the thumbnail
     $image = get_post_thumbnail_id($postObject->ID);
 
-    $img = new stdClass();
+    $img = new \stdClass();
 
     foreach( get_intermediate_image_sizes() as $s ){
       $wp_image = wp_get_attachment_image_src( $image, $s);
