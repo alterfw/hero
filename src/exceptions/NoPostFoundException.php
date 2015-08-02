@@ -2,7 +2,7 @@
 
 namespace Hero\Exceptions;
 
-class NoPostFoundException extends Exception{
+class NoPostFoundException extends \Exception{
 
     public function __construct($message = "Nenhum post foi encontrado", $code = 0) {
 

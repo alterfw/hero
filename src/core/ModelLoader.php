@@ -18,18 +18,21 @@ class ModelLoader extends Loader
 	function __construct($app)
 	{
 
+		$self = $this;
 		parent::__construct($app);
 		$this->rw = new RegisterMetabox();
 		$this->rw->register();
 
-		$this->handle('AppModel', function($_app, $instance){
-			$this->app->registerModel($instance);
-			$this->rw->add($instance->getPostType(), $instance->getFields());
+		parent::handle('AppModel', function($_app, $instance) use ($self) {
+			$_app->registerModel($instance);
+			$self->rw->add($instance->getPostType(), $instance->getFields());
 		});
+
+		$this->load();
 
 	}
 
-	private function load()
+	protected function load()
 	{
 
 		parent::load();

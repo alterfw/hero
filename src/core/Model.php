@@ -137,10 +137,10 @@ class Model {
 
 			$this->last_query = $attrs;
 			$this->paginated = true;
-			$qr = new WP_Query($attrs);
+			$qr = new \WP_Query($attrs);
 
 			if(!$qr->have_posts()){
-				throw new NoPostFoundException();
+				return [];
 			}else{
 
 				$posts = array();
