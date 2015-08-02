@@ -15,7 +15,7 @@ Using Hero out of the box.
 <?php
 
 $hero = new Hero();
-$app = $hero::get();
+$app = $hero->get();
 
 $books = $app->books->find();
 
