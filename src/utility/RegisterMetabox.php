@@ -114,10 +114,8 @@ class RegisterMetabox {
 
                             $function = $content['options'];
 
-                            if(strpos($function, '(') > -1){
-
-                                eval('$options = '.$function.';');
-
+                            if(is_string($function)){
+                                $options = call_user_func($function);
                             }else{
                                 $options = $function;
                             }
