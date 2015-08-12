@@ -28,6 +28,11 @@ class RegisterMetabox {
 
     public function doRegister(){
 
+        $post = false;
+        if(!empty($_GET['post'])){
+          $post = get_post($_GET['post']);
+        }
+
         $meta_boxes = array();
         $wp_fields = array(
         	'title',
@@ -55,6 +60,12 @@ class RegisterMetabox {
             );
 
             foreach($fields as $key => $content){
+
+              if(!empty($content['if']) && $post){
+                $condition = $content['if'];
+                eval('$valid = $post->post_'.$condition[0].' '.$condition[1].' "'.$condition[2].'";');
+                if(!$valid) continue;
+              }
 
                 if(!in_array($key, $wp_fields)){
 
