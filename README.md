@@ -1,6 +1,8 @@
 Hero
 =========
 
+[![Build Status](https://travis-ci.org/alterfw/hero.svg?branch=master)](https://travis-ci.org/alterfw/hero)
+
 Hero is the Alter's main module, responsible for all the interaction with post types and taxonomies throught models.
 
 ## Instalation
