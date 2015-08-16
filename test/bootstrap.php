@@ -1,7 +1,7 @@
 <?php
 
-require __DIR__."/../vendor/autoload.php";
 require __DIR__."/lib/wp_functions.php";
+require __DIR__."/../vendor/autoload.php";
 require __DIR__."/lib/HeroTestCase.php";
 require __DIR__."/lib/Store.php";
 require __DIR__."/lib/WP_Query.php";

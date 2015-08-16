@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ec882b64c48d0df403f43bc3ebf2d6cc",
+    "hash": "cff8e1c38129c60af6ef9134ab10fda2",
     "packages": [
         {
             "name": "alterfw/common",
@@ -79,25 +79,51 @@
             "time": "2015-08-16 04:22:13"
         },
         {
-            "name": "alterfw/wordpress-for-developers",
-            "version": "v0.1.0",
+            "name": "alterfw/php-form-generator",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/alterfw/Wordpress-for-Developers.git",
-                "reference": "165b19dc05e2d8a662d48aabb4e0fe319662cf10"
+                "url": "https://github.com/alterfw/PHP-Form-Generator-Lib.git",
+                "reference": "1c0c4f6683aafc4700924f3a9703ebd4a6158e0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/alterfw/Wordpress-for-Developers/zipball/165b19dc05e2d8a662d48aabb4e0fe319662cf10",
-                "reference": "165b19dc05e2d8a662d48aabb4e0fe319662cf10",
+                "url": "https://api.github.com/repos/alterfw/PHP-Form-Generator-Lib/zipball/1c0c4f6683aafc4700924f3a9703ebd4a6158e0d",
+                "reference": "1c0c4f6683aafc4700924f3a9703ebd4a6158e0d",
                 "shasum": ""
             },
             "type": "library",
-            "autoload": {
-                "files": [
-                    "lib/load.php"
-                ]
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lucas Pelegrino",
+                    "email": "lucas.wxp@gmail.com"
+                }
+            ],
+            "description": "This library has the goal of make simple the creation and population of HTML forms",
+            "time": "2014-07-04 02:46:40"
+        },
+        {
+            "name": "alterfw/wordpress-for-developers",
+            "version": "v0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alterfw/Wordpress-for-Developers.git",
+                "reference": "bd57fc83389d7e7d4eaf3892dd75b1755d72261f"
             },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alterfw/Wordpress-for-Developers/zipball/bd57fc83389d7e7d4eaf3892dd75b1755d72261f",
+                "reference": "bd57fc83389d7e7d4eaf3892dd75b1755d72261f",
+                "shasum": ""
+            },
+            "require": {
+                "alterfw/php-form-generator": "dev-master"
+            },
+            "type": "library",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -109,7 +135,7 @@
                 }
             ],
             "description": "A library to create CRUD elements in Wordpress",
-            "time": "2014-07-02 12:38:33"
+            "time": "2014-07-04 11:02:04"
         }
     ],
     "packages-dev": [
@@ -528,7 +554,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "alterfw/meta-box": 20
+        "alterfw/meta-box": 20,
+        "alterfw/php-form-generator": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

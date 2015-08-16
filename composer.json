@@ -12,7 +12,8 @@
   "require": {
     "alterfw/common": "0.1.*",
     "alterfw/meta-box": "dev-master",
-    "alterfw/wordpress-for-developers": "0.1.*"
+    "alterfw/wordpress-for-developers": "0.1.*",
+    "alterfw/php-form-generator": "dev-master"
   },
   "require-dev": {
     "phpunit/phpunit": "3.7.*"
