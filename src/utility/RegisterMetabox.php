@@ -69,6 +69,17 @@ class RegisterMetabox {
 
         if(!in_array($key, $wp_fields)){
 
+          if(!empty($content['options'])){
+
+            if(is_array($content['options'])){
+              $options = $content['options'];
+            } else if(is_string($content['options']) || $content['options'] instanceof Closure){
+              $function = $content['options'];
+              $options = call_user_func($function);
+            }
+
+          }
+
           switch($content['type']){
 
             case 'int':
@@ -122,14 +133,6 @@ class RegisterMetabox {
             break;
 
             case 'list':
-
-            $function = $content['options'];
-
-            if(is_string($function)){
-              $options = call_user_func($function);
-            }else{
-              $options = $function;
-            }
 
             array_push($box['fields'], array(
               'name' => $content['label'],
