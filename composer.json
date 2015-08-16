@@ -29,6 +29,9 @@
       "Hero\\Exceptions\\": "src/exceptions/",
       "Hero\\Util\\": "src/utility/"
     }
+  },
+  "scripts": {
+    "test": "phpunit -c phpunit.dist.xml"
   }
 
 }
