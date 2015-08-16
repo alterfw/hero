@@ -80,98 +80,100 @@ class RegisterMetabox {
 
           }
 
+          $field_options = [];
+
           switch($content['type']){
 
             case 'int':
 
-            array_push($box['fields'], array(
+            $field_options = array(
               'name' => $content['label'],
               'id'   => $key,
               'type' => 'number',
-            ));
+            );
 
             break;
 
             case 'text':
 
-            array_push($box['fields'], array(
+            $field_options = array(
               'name' => $content['label'],
               'id'   => $key,
               'type' => 'text',
-            ));
+            );
 
             break;
 
             case 'long_text':
 
-            array_push($box['fields'], array(
+            $field_options = array(
               'name' => $content['label'],
               'id'   => $key,
               'type' => 'textarea',
-            ));
+            );
 
             break;
 
             case 'float':
 
-            array_push($box['fields'], array(
+            $field_options = array(
               'name' => $content['label'],
               'id'   => $key,
               'type' => 'text',
-            ));
+            );
 
             break;
 
             case 'boolean':
 
-            array_push($box['fields'], array(
+            $field_options = array(
               'name' => $content['label'],
               'id'   => $key,
               'type' => 'checkbox',
-            ));
+            );
 
             break;
 
             case 'list':
 
-            array_push($box['fields'], array(
+            $field_options = array(
               'name' => $content['label'],
               'id'   => $key,
               'type' => 'select',
               'options' => $options
-            ));
+            );
 
             break;
 
             case 'file':
 
-            array_push($box['fields'], array(
+            $field_options = array(
               'name' => $content['label'],
               'id'   => $key,
               'type' => 'file',
-            ));
+            );
 
             break;
 
             case 'date':
 
-            array_push($box['fields'], array(
+            $field_options = array(
               'name' => $content['label'],
               'id'   => $key,
               'type' => 'date',
-            ));
+            );
 
             break;
 
             case 'map':
 
-            array_push($box['fields'], array(
+            $field_options = array(
               'name' => $content['label'],
               'id'   => $key,
               'type' => 'map',
               'style' => 'height: 300px;',
               'std' => '-7.1274404, -34.868966'
-            ));
+            );
 
             break;
 
@@ -179,33 +181,37 @@ class RegisterMetabox {
 
             if(empty($content['multiple'])){
 
-              array_push($box['fields'], array(
+              $field_options = array(
                 'name' => $content['label'],
                 'id'   => $key,
                 'type' => 'image',
-              ));
+              );
 
             }else{
 
-              array_push($box['fields'], array(
+              $field_options = array(
                 'name' => $content['label'],
                 'id'   => $key,
                 'type' => 'plupload_image',
-              ));
+              );
 
             }
 
             break;
 
             default:
-            array_push($box['fields'], array(
+            $field_options = array(
               'name' => $content['label'],
               'id'   => $key,
               'type' => $content['type'],
-            ));
+            );
             break;
 
           }
+
+          unset($content['label']);
+          $merged = array_merge($content, $field_options);
+          array_push($box['fields'], $merged);
 
         }
 
