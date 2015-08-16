@@ -206,6 +206,7 @@ class RegisterMetabox {
               'name' => $content['label'],
               'id'   => $key,
               'type' => $content['type'],
+              'options' => $options
             );
             break;
 
