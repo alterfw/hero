@@ -73,9 +73,11 @@ class RegisterMetabox {
 
             if(is_array($content['options'])){
               $options = $content['options'];
-            } else if(is_string($content['options']) || $content['options'] instanceof Closure){
+            } else if(is_callable($content['options'])){
               $function = $content['options'];
               $options = call_user_func($function);
+            } else {
+              $options = [];
             }
 
           }
