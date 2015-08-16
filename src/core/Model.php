@@ -17,6 +17,10 @@ class Model {
 		$this->appModel = $appModel;
 	}
 
+	public function getModel() {
+		return $this->appModel;
+	}
+
     /**
      * Automagic Methods
      * @param $method
@@ -137,6 +141,7 @@ class Model {
 
 			$this->last_query = $attrs;
 			$this->paginated = true;
+
 			$qr = new \WP_Query($attrs);
 
 			if(!$qr->have_posts()){
