@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Hero</title>
+
+        <link rel="stylesheet" href="http://alterfw.github.io/hero/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://alterfw.github.io/hero/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://alterfw.github.io/hero/css/highlight.dark.css">
+        <link rel="stylesheet" href="http://alterfw.github.io/hero/css/main.css">
+    </head>
+    <body>
+
+        <header class="navbar navbar-default navbar-fixed-top">
+
+            <a class="navbar-brand" href="http://alterfw.github.io/hero/">
+                Hero
+                <small class="hidden-xs hidden-sm">
+                    Models in WordPress applications
+                </small>
+            </a>
+
+                            <a href="https://github.com/alterfw/hero">
+                    <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
+                </a>
+            
+        </header>
+
+        <main class="container-fluid">
+            <div class="row">
+
+                
+                    <nav id="sidebar" class="col-sm-3 col-lg-2" role="navigation">
+
+                        <ul class="nav nav-pills nav-stacked">
+                                                            <li class="">
+                                    <a href="http://alterfw.github.io/hero/doc/faq.html">
+                                        Home page
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="https://example.com">
+                                        Another link
+                                    </a>
+                                </li>
+                                                    </ul>
+
+                    </nav>
+
+                
+                <section id="content" class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+                    <h1 id="hero">Hero</h1>
+<p><a href="https://travis-ci.org/alterfw/hero"><img src="https://travis-ci.org/alterfw/hero.svg?branch=master" alt="Build Status" /></a></p>
+<p>Hero is the Alter's main module, responsible for all the interaction with post types and taxonomies throught models.</p>
+<h2 id="instalation">Instalation</h2>
+<pre><code>composer require alterfw/hero</code></pre>
+<h2 id="usage">Usage</h2>
+<p>Using Hero out of the box.</p>
+<pre><code class="language-php">&lt;?php
+
+$hero = new Hero();
+$app = $hero-&gt;get();
+
+$books = $app-&gt;books-&gt;find();
+</code></pre>
+<h2 id="documentation">Documentation</h2>
+<p>Please read the documentation on the <a href="http://alter-framework.readthedocs.org/en/latest/models.html">Alter Documentation Website</a>.</p>
+                </section>
+
+            </div>
+        </main>
+
+        <footer>
+            <div class="container-fluid">
+                <p class="text-muted">
+                    website generated with <a href="http://couscous.io" title="Markdown website generator">Couscous</a>
+                </p>
+            </div>
+        </footer>
+
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="//yastatic.net/highlightjs/8.2/highlight.min.js"></script>
+
+        <script>
+            $(function() {
+                $("section>h1").wrap('<div class="page-header" />');
+                // Syntax highlighting
+                hljs.initHighlightingOnLoad();
+            });
+        </script>
+
+    </body>
+</html>

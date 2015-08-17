@@ -1,29 +1,65 @@
-Hero
-=========
+---
+currentMenu: home
+---
+# Couscous Light template
 
-[![Build Status](https://travis-ci.org/alterfw/hero.svg?branch=master)](https://travis-ci.org/alterfw/hero)
-
-Hero is the Alter's main module, responsible for all the interaction with post types and taxonomies throught models.
-
-## Instalation
-
-    composer require alterfw/hero
+![](screenshot.png)
 
 ## Usage
 
-Using Hero out of the box.
+To use the template, set it up in your `couscous.yml` configuration file:
 
-```php
-<?php
-
-$hero = new Hero();
-$app = $hero->get();
-
-$books = $app->books->find();
-
+```yaml
+template:
+    url: https://github.com/CouscousPHP/Template-Light
 ```
 
+## Configuration
 
-## Documentation
+Here are all the variables you can set in your `couscous.yml`:
 
-Please read the documentation on the [Alter Documentation Website](http://alter-framework.readthedocs.org/en/latest/models.html).
+```yaml
+# Base URL of the published website
+baseUrl: http://username.github.io/project
+
+# Used to link to the GitHub project
+github:
+    user: myself
+    repo: my-project
+
+title: My project
+subTitle: This is a great project.
+
+# The left menu bar
+menu:
+    items:
+        home:
+            text: Home page
+            # You can use relative urls
+            relativeUrl: doc/faq.html
+        foo:
+            text: Another link
+            # Or absolute urls
+            absoluteUrl: https://example.com
+```
+
+Note that the menu items can also contain HTML:
+
+```yaml
+home:
+    text: "<i class=\"fa fa-github\"></i> Home page"
+    relativeUrl: doc/faq.html
+```
+
+## Menu
+
+To set the current menu item (i.e. highlighted menu item), set the `currentMenu`
+key in the Markdown files:
+
+```markdown
+---
+currentMenu: home
+---
+
+# Welcome
+```
