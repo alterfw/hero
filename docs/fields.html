@@ -76,18 +76,63 @@
 
                 
                 <section id="content" class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
-                    <h1 id="hero">Hero</h1>
-<p><a href="https://travis-ci.org/alterfw/hero"><img src="https://travis-ci.org/alterfw/hero.svg?branch=master" alt="Build Status" /></a></p>
-<p>Hero is the Alter's main module, responsible for all the interaction with post types and taxonomies throught models.</p>
-<h2 id="instalation">Instalation</h2>
-<pre><code>composer require alterfw/hero</code></pre>
-<h2 id="getting-started">Getting started</h2>
-<p>Require the composer autoload file into your <code>functions.php</code>:</p>
-<pre><code class="language-php">require "vendor/autoload.php";</code></pre>
-<p>And Hero will be ready:</p>
-<pre><code class="language-php">$hero = new Hero()-&gt;get();
-$books = $hero-&gt;books-&gt;find();
-</code></pre>
+                    <h1 id="setting-model-fields">Setting model fields</h1>
+<p>Hero has built in supprt to WordPress default fields such as title and thumbnail, you just need to set to true using the <code>$fields</code> attribute.</p>
+<pre><code class="language-php">&lt;?php
+// car.php
+class Car extends AppModel {
+
+  public $fields = [
+
+    'title' =&gt; true,
+    'thumbnail' =&gt; true
+
+  ];
+
+}</code></pre>
+<h2 id="custom-fields">Custom fields</h2>
+<p>Hero allows you to use custom fields in your model:</p>
+<pre><code class="language-php">public $fields = [
+  'name' =&gt; [
+    'type' =&gt; 'text',
+    'label' =&gt; 'Name' // Name showed on WordPress admin
+  ]
+];</code></pre>
+<p>The built in field types on Hero are:</p>
+<p><strong>text:</strong>
+A simple text field</p>
+<p><strong>long_text:</strong>
+A textarea that allows more text than <code>text</code></p>
+<p><strong>int:</strong>
+A field of type <code>number</code>.</p>
+<p><strong>boolean:</strong>
+A checkbox field</p>
+<p><strong>image:</strong>
+An image field, you can enable multiple images via <code>multiple</code> parameter:</p>
+<pre><code class="language-php">'gallery' =&gt; [
+  'type' =&gt; 'image',
+  'label' =&gt; 'Gallery',
+  'multiple' =&gt; true // Enables multiple images
+]</code></pre>
+<p><strong>list:</strong> A <code>select</code> field, you can pass the options throught the <code>options</code> parameter:</p>
+<pre><code class="language-php">'fruits' =&gt; [
+  'type' =&gt; 'list',
+  'label' =&gt; 'Fruits',
+  'options' =&gt; ['Apple', 'Orange', 'Banana']
+]</code></pre>
+<p>Using the <code>list</code> field type you can also pass a function name or an <em>Closure</em> in the <code>options</code> parameter:</p>
+<pre><code class="language-php">function get_fruits(){
+  return ['Apple', 'Orange', 'Banana']
+}</code></pre>
+<pre><code class="language-php">'fruits' =&gt; [
+  'type' =&gt; 'list',
+  'label' =&gt; 'Fruits',
+  'options' =&gt; 'get_fruits'
+]</code></pre>
+<p><strong>file:</strong>
+A <code>file</code> field</p>
+<h3 id="meta-box-fields">Meta Box fields</h3>
+<p>Hero uses Meta Box to create the custom fields, you can also use any of the <a href="https://metabox.io/docs/define-fields/">Meta Box fields</a>.</p>
                 </section>
 
             </div>

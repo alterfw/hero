@@ -76,18 +76,16 @@
 
                 
                 <section id="content" class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
-                    <h1 id="hero">Hero</h1>
-<p><a href="https://travis-ci.org/alterfw/hero"><img src="https://travis-ci.org/alterfw/hero.svg?branch=master" alt="Build Status" /></a></p>
-<p>Hero is the Alter's main module, responsible for all the interaction with post types and taxonomies throught models.</p>
-<h2 id="instalation">Instalation</h2>
-<pre><code>composer require alterfw/hero</code></pre>
-<h2 id="getting-started">Getting started</h2>
-<p>Require the composer autoload file into your <code>functions.php</code>:</p>
-<pre><code class="language-php">require "vendor/autoload.php";</code></pre>
-<p>And Hero will be ready:</p>
-<pre><code class="language-php">$hero = new Hero()-&gt;get();
-$books = $hero-&gt;books-&gt;find();
-</code></pre>
+                    <h1 id="creating-models">Creating models</h1>
+<p>To create Hero models you need to create a directory named <code>model</code> in your theme's root directory.
+Inside the <code>model</code> folder you can create your model classes extending <code>AppModel</code>.</p>
+<p><strong>Note:</strong> Hero needs that the file name match the class name to work properly.</p>
+<p><em>E.g.</em></p>
+<pre><code class="language-php">&lt;?php
+// car.php
+class Car extends AppModel {
+
+}</code></pre>
                 </section>
 
             </div>

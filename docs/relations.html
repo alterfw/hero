@@ -76,18 +76,27 @@
 
                 
                 <section id="content" class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
-                    <h1 id="hero">Hero</h1>
-<p><a href="https://travis-ci.org/alterfw/hero"><img src="https://travis-ci.org/alterfw/hero.svg?branch=master" alt="Build Status" /></a></p>
-<p>Hero is the Alter's main module, responsible for all the interaction with post types and taxonomies throught models.</p>
-<h2 id="instalation">Instalation</h2>
-<pre><code>composer require alterfw/hero</code></pre>
-<h2 id="getting-started">Getting started</h2>
-<p>Require the composer autoload file into your <code>functions.php</code>:</p>
-<pre><code class="language-php">require "vendor/autoload.php";</code></pre>
-<p>And Hero will be ready:</p>
-<pre><code class="language-php">$hero = new Hero()-&gt;get();
-$books = $hero-&gt;books-&gt;find();
-</code></pre>
+                    <h1 id="relationships">Relationships</h1>
+<p>In Hero you can specify relations between models such as <code>belongs_to</code> and <code>has_many</code>.</p>
+<p>Creates the <code>Car</code> model:</p>
+<pre><code>&lt;?php
+class Car extends AppModel {
+
+}</code></pre>
+<p>Attachs a field of type <code>checkbox_list</code> with a list of cars into the <code>User</code> model:</p>
+<pre><code>&lt;?php
+class User extends AppModel {
+
+  $has_many = 'car';
+
+}</code></pre>
+<p>Attachs a field of type <code>list</code> with a list of users into the <code>Apartment</code> model:</p>
+<pre><code>&lt;?php
+class Apartment extends AppModel {
+
+  $belongs_to = 'user';
+
+}</code></pre>
                 </section>
 
             </div>

@@ -76,18 +76,80 @@
 
                 
                 <section id="content" class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
-                    <h1 id="hero">Hero</h1>
-<p><a href="https://travis-ci.org/alterfw/hero"><img src="https://travis-ci.org/alterfw/hero.svg?branch=master" alt="Build Status" /></a></p>
-<p>Hero is the Alter's main module, responsible for all the interaction with post types and taxonomies throught models.</p>
-<h2 id="instalation">Instalation</h2>
-<pre><code>composer require alterfw/hero</code></pre>
-<h2 id="getting-started">Getting started</h2>
-<p>Require the composer autoload file into your <code>functions.php</code>:</p>
-<pre><code class="language-php">require "vendor/autoload.php";</code></pre>
-<p>And Hero will be ready:</p>
-<pre><code class="language-php">$hero = new Hero()-&gt;get();
-$books = $hero-&gt;books-&gt;find();
-</code></pre>
+                    <h1 id="retrieving-data">Retrieving data</h1>
+<p>Hero offers a simple and powerful API to retrieve data. Let's supose that you have this <code>Car</code> model:</p>
+<pre><code class="language-php">&lt;?php
+// car.php
+class Car extends AppModel {
+
+  public $fields = [
+
+    'title' =&gt; true
+    'thumbnail' =&gt; true,
+
+    'gallery' =&gt; [
+      'type' =&gt; 'image',
+      'label' =&gt; 'Gallery',
+      'multiple' =&gt; true
+    ],
+
+    'year' =&gt; [
+      'type' =&gt; 'int',
+      'label' =&gt; 'Year'
+    ]
+
+  ];
+
+}</code></pre>
+<p>You can just call:</p>
+<pre><code>&lt;?php
+$cars = $hero-&gt;car-&gt;find(); // Array of Cars</code></pre>
+<p>And access the model fields:</p>
+<pre><code>&lt;?php
+foreach($hero-&gt;car-&gt;find() as $car){
+
+  echo $car-&gt;title;
+  echo $car-&gt;year;
+
+  foreach($car-&gt;gallery as $photo){
+    echo $photo-&gt;thumbnail;
+  }
+
+}</code></pre>
+<h2 id="model-methods">Model methods</h2>
+<h3 id="findoptions">find($options)</h3>
+<ul>
+<li>$options: Array of <a href="https://codex.wordpress.org/Class_Reference/WP_Query">WP_Query</a> arguments</li>
+</ul>
+<p>Retrieves an array of items</p>
+<h3 id="findbyslugslug">findBySlug($slug)</h3>
+<ul>
+<li>$slug: String</li>
+</ul>
+<p>Retrives an item matching the slug passed as argument</p>
+<h3 id="findbytaxonomytaxonomy-term-limit">findByTaxonomy($taxonomy, $term, $limit)</h3>
+<ul>
+<li>$taxonomy: String</li>
+<li>$term: String</li>
+<li>$limit: Integer (optional)</li>
+</ul>
+<p>Retrieves an array of items matching the passed taxonomy and term</p>
+<h3 id="paginatelimit-offset">paginate($limit, $offset)</h3>
+<ul>
+<li>$limit: Integer (optional)</li>
+<li>$offset: Integer (optional)</li>
+</ul>
+<p>Returns an instance of the model class so you can chain any of the <em>find</em> methods:</p>
+<pre><code class="language-php">$cars = $hero-&gt;car-&gt;paginate()-&gt;find();</code></pre>
+<h3 id="paginationtype">pagination($type)</h3>
+<ul>
+<li>$type: Boolean (optional)</li>
+</ul>
+<p>Returns an array of pages to show pagination links in the template, if <code>$type</code> is false only return the previous and next pages.</p>
+<h2 id="automagic-find-methods">Automagic find() methods</h2>
+<p>Hero allows you to use automagic <em>find()</em> methods according to you custom fields.</p>
+<pre><code>$cars = $hero-&gt;car-&gt;findByYear(2015)</code></pre>
+<p>This method will search all the cars that have the custom fields <code>year</code> with the <em>2015</em> value.</p>
                 </section>
 
             </div>
