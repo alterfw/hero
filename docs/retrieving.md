@@ -33,14 +33,14 @@ You can just call:
 
 ```
 <?php
-$cars = $hero->car->find(); // Array of Cars
+$cars = $app->car->find(); // Array of Cars
 ```
 
 And access the model fields:
 
 ```
 <?php
-foreach($hero->car->find() as $car){
+foreach($app->car->find() as $car){
 
   echo $car->title;
   echo $car->year;
@@ -82,7 +82,7 @@ Retrieves an array of items matching the passed taxonomy and term
 Returns an instance of the model class so you can chain any of the *find* methods:
 
 ```php
-$cars = $hero->car->paginate()->find();
+$cars = $app->car->paginate()->find();
 ```
 
 ### pagination($type)
@@ -96,7 +96,7 @@ Returns an array of pages to show pagination links in the template, if `$type` i
 Hero allows you to use automagic *find()* methods according to you custom fields.
 
 ```
-$cars = $hero->car->findByYear(2015)
+$cars = $app->car->findByYear(2015)
 ```
 
 This method will search all the cars that have the custom fields `year` with the *2015* value.
