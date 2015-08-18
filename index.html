@@ -85,9 +85,9 @@
 <p>Require the composer autoload file into your <code>functions.php</code>:</p>
 <pre><code class="language-php">require "vendor/autoload.php";</code></pre>
 <p>And Hero will be ready:</p>
-<pre><code class="language-php">$hero = new Hero()-&gt;get();
-$books = $hero-&gt;books-&gt;find();
-</code></pre>
+<pre><code class="language-php">$hero = new Hero();
+$app = $hero-&gt;get();
+$books = $app-&gt;books-&gt;find();</code></pre>
                 </section>
 
             </div>

@@ -103,10 +103,10 @@ class Car extends AppModel {
 }</code></pre>
 <p>You can just call:</p>
 <pre><code>&lt;?php
-$cars = $hero-&gt;car-&gt;find(); // Array of Cars</code></pre>
+$cars = $app-&gt;car-&gt;find(); // Array of Cars</code></pre>
 <p>And access the model fields:</p>
 <pre><code>&lt;?php
-foreach($hero-&gt;car-&gt;find() as $car){
+foreach($app-&gt;car-&gt;find() as $car){
 
   echo $car-&gt;title;
   echo $car-&gt;year;
@@ -140,7 +140,7 @@ foreach($hero-&gt;car-&gt;find() as $car){
 <li>$offset: Integer (optional)</li>
 </ul>
 <p>Returns an instance of the model class so you can chain any of the <em>find</em> methods:</p>
-<pre><code class="language-php">$cars = $hero-&gt;car-&gt;paginate()-&gt;find();</code></pre>
+<pre><code class="language-php">$cars = $app-&gt;car-&gt;paginate()-&gt;find();</code></pre>
 <h3 id="paginationtype">pagination($type)</h3>
 <ul>
 <li>$type: Boolean (optional)</li>
@@ -148,7 +148,7 @@ foreach($hero-&gt;car-&gt;find() as $car){
 <p>Returns an array of pages to show pagination links in the template, if <code>$type</code> is false only return the previous and next pages.</p>
 <h2 id="automagic-find-methods">Automagic find() methods</h2>
 <p>Hero allows you to use automagic <em>find()</em> methods according to you custom fields.</p>
-<pre><code>$cars = $hero-&gt;car-&gt;findByYear(2015)</code></pre>
+<pre><code>$cars = $app-&gt;car-&gt;findByYear(2015)</code></pre>
 <p>This method will search all the cars that have the custom fields <code>year</code> with the <em>2015</em> value.</p>
                 </section>
 
