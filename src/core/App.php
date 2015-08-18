@@ -69,7 +69,7 @@ class App {
 			}
 
 			if(count($post_type) > 0){
-				new AppTaxonomy($tax, $post_type);
+				new \AppTaxonomy($tax, $post_type);
 			}
 
 		}

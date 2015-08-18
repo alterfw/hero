@@ -20,7 +20,7 @@ require "vendor/autoload.php";
 And Hero will be ready:
 
 ```php
-$hero = new Hero()->get();
-$books = $hero->books->find();
-
+$hero = new Hero();
+$app = $hero->get();
+$books = $app->books->find();
 ```
