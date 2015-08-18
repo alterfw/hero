@@ -9,21 +9,18 @@ Hero is the Alter's main module, responsible for all the interaction with post t
 
     composer require alterfw/hero
 
-## Usage
+## Getting started
 
-Using Hero out of the box.
+Require the composer autoload file into your `functions.php`:
 
 ```php
-<?php
-
-$hero = new Hero();
-$app = $hero->get();
-
-$books = $app->books->find();
-
+require "vendor/autoload.php";
 ```
 
+And Hero will be ready:
 
-## Documentation
+```php
+$hero = new Hero()->get();
+$books = $hero->books->find();
 
-Please read the documentation on the [Alter Documentation Website](http://alter-framework.readthedocs.org/en/latest/models.html).
+```
