@@ -1,18 +1,21 @@
 <?php
 
 namespace Hero\Core;
+use Hero\Util\Store;
 
 class Post {
 
-  public function __construct($postObject, $model){
+  public function __construct($this_id, $post_type, $exclude_relations = []){
 
+    $postObject = get_post($this_id);
     $object = array();
+    $className = ucfirst($post_type);
+    $model = new $className;
 
     $fields = $model->getFields();
     $taxonomies = $model->getTaxonomies();
 
     $modelDefaultFields = array('title', 'thumbnail', 'editor');
-    $valueTypes = array('text', 'long_text', 'int', 'float', 'boolean', 'list', 'date', 'map');
 
     // Post default properties
     foreach($postObject as $key => $value){
@@ -60,7 +63,7 @@ class Post {
 
       if(!in_array($key, $modelDefaultFields)){
 
-        if(in_array($value['type'], $valueTypes)){
+        if($value['type'] !== 'image' && $value['type'] !== 'file'){
 
           if(empty($value['multiple']) || !$value['multiple']){
             $this->{$key} = get_post_meta($postObject->ID, $key, true);
@@ -92,10 +95,63 @@ class Post {
 
     }
 
+    // Relations
+
+    $has_many = Store::get('relation_has_many');
+    foreach($has_many as $many){
+      if($many['target'] == $model->getPostType() && !in_array($many['model'], $exclude_relations)){
+        $manyqr = new \WP_Query([
+          'post_type'      => $many['model'],
+          'meta_key'       => $many['target'],
+          'meta_value'     =>$this->ID
+        ]);
+        if($manyqr->have_posts()){
+          $ids = [];
+          foreach($manyqr->posts as $_post){
+            array_push($ids, new Post($_post->ID, $many['model'], [$many['target']]));
+          }
+          $this->{$many['model']} = $ids;
+        } else {
+          $this->{$many['model']} = [];
+        }
+      } else if($many['model'] == $model->getPostType()){
+        if(is_array($this->{$many['target']})){
+          $ids = [];
+          var_dump($this->{$many['target']});
+          foreach($this->{$many['target']} as $item) array_push($ids, new Post($item, $many['target'], [$many['model']]));
+          $this->{$many['target']} = $ids;
+        } else {
+          $this->{$many['target']} = new Post($this->{$many['target']}, $many['target'], [$many['model']]);
+        }
+
+      }
+    }
+
+    $belongs_to = Store::get('relation_belongs_to');
+    //var_dump($belongs_to);
+    foreach($belongs_to as $bel){
+      if($bel['target'] == $model->getPostType()  && !in_array($many['model'], $exclude_relations)){
+        $belqr = new \WP_Query([
+          'post_type'      => $bel['model'],
+          'meta_key'       => $bel['target'],
+          'meta_value'     =>$this->ID
+        ]);
+        if($belqr->have_posts()){
+          $this->{$bel['model']} = new Post($belqr->posts[0], $bel['model'], [$bel['target']]);
+        } else {
+          $this->{$bel['model']} = null;
+        }
+      } else if($bel['model'] == $model->getPostType()){
+        $this->{$bel['target']} = new Post($this->{$bel['target']}, $bel['target'], [$bel['model']]);
+      }
+    }
+
+
+
     // Include subpages
     if($model->getPostType() == 'page'){
 
-      $my_wp_query = new WP_Query();
+      $my_wp_query = new \WP_Query();
       $all_wp_pages = $my_wp_query->query(array('post_type' => 'page'));
 
       // Filter through all pages and find Portfolio's children

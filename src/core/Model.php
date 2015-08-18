@@ -37,13 +37,10 @@ class Model {
         $findvalue = $arguments[0];
 
         if(!empty($arguments[1]) && count($arguments[1]) > 0){
-
-            foreach($arguments[1] as $f => $v){
-                $qr[$f] = $v;
-            }
-
+          foreach($arguments[1] as $f => $v){
+              $qr[$f] = $v;
+          }
         }
-
 
         $custom_fields = array();
         foreach($this->appModel->getFields() as $field => $value){
@@ -130,7 +127,7 @@ class Model {
 			}
 
 			if(!empty($attrs['p'])){
-				return new Post(get_post($attrs['p']), $this->appModel);
+				return new Post($attrs['p'], $this->post_type);
 			}
 
 			if($this->paginate_limit)
@@ -154,7 +151,7 @@ class Model {
 
 					$qr->the_post();
 
-					$obj = new Post(get_post(get_the_ID()), $this->appModel);
+					$obj = new Post(get_the_ID(), $this->post_type);
 					array_push($posts, $obj);
 
 				}

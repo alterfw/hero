@@ -4,6 +4,7 @@ abstract class AppModel {
 
   private $post_type;
   private $default_post_type = array('post', 'page');
+  protected $relations = [];
   protected $fields = [];
   protected $belongs_to = false;
   protected $has_many = false;
@@ -58,9 +59,15 @@ abstract class AppModel {
     return $this->post_type;
   }
 
-  private function registerRelation($model, $type) {
+  public function getRelations() {
+    return $this->relations;
+  }
+
+  private function registerRelation($model, $relation) {
 
     $app = Hero::$app;
+    $this->relations[$model] = $relation;
+    $type = ($relation == 'belongs_to') ? 'list' : 'checkbox_list';
 
     $this->fields[$model] = [
       'type' => $type,
@@ -77,9 +84,9 @@ abstract class AppModel {
   private function registerBelongs(){
 
     if(is_array($this->belongs_to)){
-      foreach($this->belongs_to as $model) $this->registerRelation($model, 'list');
+      foreach($this->belongs_to as $model) $this->registerRelation($model, 'belongs_to');
     } else if(is_string($this->belongs_to)){
-      $this->registerRelation($this->belongs_to, 'list');
+      $this->registerRelation($this->belongs_to, 'belongs_to');
     }
 
   }
@@ -87,9 +94,9 @@ abstract class AppModel {
   private function registerHasMany() {
 
     if(is_array($this->has_many)){
-      foreach($this->has_many as $model) $this->registerRelation($model, 'checkbox_list');
+      foreach($this->has_many as $model) $this->registerRelation($model, 'has_many');
     } else if(is_string($this->belongs_to)){
-      $this->registerRelation($this->has_many, 'checkbox_list');
+      $this->registerRelation($this->has_many, 'has_many');
     }
 
   }

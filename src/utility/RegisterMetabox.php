@@ -4,7 +4,7 @@ namespace Hero\Util;
 
 class RegisterMetabox {
 
-  private $boxes = array();
+  private $boxes = [];
 
   /**
   * Add a post type and his fields

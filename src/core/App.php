@@ -1,6 +1,7 @@
 <?php
 
 namespace Hero\Core;
+use Hero\Util\Store;
 
 class App {
 
@@ -11,12 +12,20 @@ class App {
 
 	public function __construct(){
 		$this->option = new \stdClass();
+		Store::set('relation_belongs_to', []);
+		Store::set('relation_has_many', []);
+	}
+
+	private function registerRelations($model){
+		foreach($model->getRelations() as $target=>$relation){
+			Store::push('relation_'.$relation, ['model' => $model->getPostType(), 'target'=> $target]);
+		}
 	}
 
 	public function registerModel($model){
 
+		$this->registerRelations($model);
 		$modelName = str_replace('model', '', strtolower(get_class($model)));
-
 		$modelItem = new Model($model);
 		$this->{$modelName} = $modelItem;
 
