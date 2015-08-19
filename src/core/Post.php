@@ -189,7 +189,7 @@ class Post {
 
       $image = get_post_meta($postObject->ID, $key, true);
 
-      $img = new stdClass();
+      $img = new \stdClass();
 
       foreach( get_intermediate_image_sizes() as $s ){
         $wp_image = wp_get_attachment_image_src( $image, $s);
@@ -208,7 +208,7 @@ class Post {
 
       foreach($images as $image){
 
-        $img = new stdClass();
+        $img = new \stdClass();
 
         foreach( get_intermediate_image_sizes() as $s ){
           $wp_image = wp_get_attachment_image_src( $image, $s);
