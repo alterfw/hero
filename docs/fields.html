@@ -131,6 +131,17 @@ An image field, you can enable multiple images via <code>multiple</code> paramet
 ]</code></pre>
 <p><strong>file:</strong>
 A <code>file</code> field</p>
+<h3 id="conditional-fields">Conditional fields</h3>
+<p>In some cases you want to show an specific field in a specific condition, you can do this using conditional fields:</p>
+<pre><code class="language-php">protected $fields = [
+  'title' =&gt; true,
+  'color' =&gt; [
+    'type' =&gt; 'text',
+    'label' =&gt; 'Color',
+    'if' =&gt; ['name', '==', 'contact']
+  ],
+];</code></pre>
+<p>In the example above the field <code>color</code> will only appear if the <code>post_name</code> is <code>contact</code>.</p>
 <h3 id="meta-box-fields">Meta Box fields</h3>
 <p>Hero uses Meta Box to create the custom fields, you can also use any of the <a href="https://metabox.io/docs/define-fields/">Meta Box fields</a>.</p>
                 </section>
