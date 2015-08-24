@@ -15,7 +15,8 @@ class Post {
     $fields = $model->getFields();
     $taxonomies = $model->getTaxonomies();
 
-    $modelDefaultFields = array('title', 'thumbnail', 'editor');
+    $modelDefaultFields = ['title', 'thumbnail', 'editor'];
+    $multipleFields = ['checkbox_list', 'plupload_image', 'checkbox_tree'];
 
     // Post default properties
     foreach($postObject as $key => $value){
@@ -61,14 +62,17 @@ class Post {
     // Custom fields
     foreach($fields as $key => $value){
 
+      $is_multiple = (!empty($value['multiple'])  && $value['multiple']);
+
       if(!in_array($key, $modelDefaultFields)){
 
         if($value['type'] !== 'image' && $value['type'] !== 'file'){
 
-          if(empty($value['multiple']) || !$value['multiple']){
-            $this->{$key} = get_post_meta($postObject->ID, $key, true);
-          }else{
+          if($is_multiple || in_array($value['type'], $multipleFields)){
             $this->{$key} = get_post_meta($postObject->ID, $key);
+
+          }else{
+            $this->{$key} = get_post_meta($postObject->ID, $key, true);
           }
 
         }else{
@@ -117,7 +121,6 @@ class Post {
       } else if($many['model'] == $model->getPostType()){
         if(is_array($this->{$many['target']})){
           $ids = [];
-          var_dump($this->{$many['target']});
           foreach($this->{$many['target']} as $item) array_push($ids, new Post($item, $many['target'], [$many['model']]));
           $this->{$many['target']} = $ids;
         } else {
