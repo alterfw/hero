@@ -19,11 +19,6 @@ class Hero {
     if(!defined('RWMB_URL')) define('RWMB_URL', get_site_url().'/wp-content'.$path[1].'/');
     if(!defined('RWMB_DIR')) define('RWMB_DIR', ALTER_VENDOR . "/meta-box/" );
 
-    // ---- Import framework dependencies in the right order (Composer sucks for that!)
-    require_once ALTER_VENDOR . "/php-form-generator/fg/load.php";
-    require_once ALTER_VENDOR . "/wordpress-for-developers/lib/load.php";
-    require_once ALTER_VENDOR . "/meta-box/meta-box.php";
-
     self::$app = new App();
     new ModelLoader(self::$app);
 
