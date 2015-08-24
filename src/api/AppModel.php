@@ -95,7 +95,7 @@ abstract class AppModel {
 
     if(is_array($this->has_many)){
       foreach($this->has_many as $model) $this->registerRelation($model, 'has_many');
-    } else if(is_string($this->belongs_to)){
+    } else if(is_string($this->has_many)){
       $this->registerRelation($this->has_many, 'has_many');
     }
 
