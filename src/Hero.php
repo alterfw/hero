@@ -12,15 +12,33 @@ class Hero {
     // Constants
     if(!defined('ALTER')) define('ALTER', __DIR__ . "/..");
     if(!defined('ALTER_VENDOR')) define('ALTER_VENDOR', ALTER . "/..");
+    if(!defined('COMMOM_VENDOR')) define('COMMOM_VENDOR', ALTER . "/../..");
 
     if(!defined('APPLICATION_PATH')) define('APPLICATION_PATH', get_template_directory());
 
-    $path = explode('wp-content', realpath(ALTER_VENDOR . "/meta-box/"));
-    if(!defined('RWMB_URL')) define('RWMB_URL', get_site_url().'/wp-content'.$path[1].'/');
-    if(!defined('RWMB_DIR')) define('RWMB_DIR', ALTER_VENDOR . "/meta-box/" );
+    $this->loadMetaBox();
 
     self::$app = new App();
     new ModelLoader(self::$app);
+
+  }
+
+  private function loadMetaBox() {
+
+    $path = explode('wp-content', realpath(COMMOM_VENDOR . "/rilwis/meta-box/"));
+    RWMB_Loader::load(get_site_url().'/wp-content'.$path[1].'/', COMMOM_VENDOR . "/rilwis/meta-box/");
+
+    require_once RWMB_INC_DIR . 'common.php';
+    require_once RWMB_INC_DIR . 'field.php';
+    require_once RWMB_INC_DIR . 'field-multiple-values.php';
+
+    foreach ( glob( RWMB_FIELDS_DIR . '*.php' ) as $file ) {
+      require_once $file;
+    }
+
+    require_once RWMB_INC_DIR . 'meta-box.php';
+    require_once RWMB_INC_DIR . 'helpers.php';
+    require_once RWMB_INC_DIR . 'init.php';
 
   }
 
