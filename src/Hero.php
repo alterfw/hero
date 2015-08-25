@@ -10,6 +10,7 @@ class Hero {
   public function __construct() {
 
     // Constants
+    if(!defined('HERO_ENV')) define('HERO_ENV', 'PROD');
     if(!defined('ALTER')) define('ALTER', __DIR__ . "/..");
     if(!defined('ALTER_VENDOR')) define('ALTER_VENDOR', ALTER . "/..");
     if(!defined('COMMOM_VENDOR')) define('COMMOM_VENDOR', ALTER . "/../..");
@@ -25,8 +26,14 @@ class Hero {
 
   private function loadMetaBox() {
 
-    $path = explode('wp-content', realpath(COMMOM_VENDOR . "/rilwis/meta-box/"));
-    RWMB_Loader::load(get_site_url().'/wp-content'.$path[1].'/', COMMOM_VENDOR . "/rilwis/meta-box/");
+    if(HERO_ENV == 'PROD') {
+      $path = explode('wp-content', realpath(COMMOM_VENDOR . "/rilwis/meta-box/"));
+      $url = get_site_url().'/wp-content'.$path[1].'/';
+    } else {
+      $url = 'http://localhost';
+    }
+
+    RWMB_Loader::load($url, COMMOM_VENDOR . "/rilwis/meta-box/");
 
     require_once RWMB_INC_DIR . 'common.php';
     require_once RWMB_INC_DIR . 'field.php';
