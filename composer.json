@@ -18,8 +18,9 @@
   },
   "autoload": {
     "files": [ "src/bootstrap.php"],
-    "psr-0": {
-      "Hero\\": "src/"
+    "psr-4": {
+      "Hero\\Core\\": "src/Core/",
+      "Hero\\Util\\": "src/Util/"
     }
   },
   "scripts": {
