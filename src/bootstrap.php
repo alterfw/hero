@@ -1,13 +1,11 @@
-<?php
+<?php namespace Hero;
 
-use Hero\Core\App;
-use Hero\Core\ModelLoader;
+use Hero\Util\Register;
+use Hero\Util\Store;
 
-class Hero {
+class Loader {
 
-  public static $app;
-
-  public function __construct() {
+  public static function load() {
 
     // Constants
     if(!defined('HERO_ENV')) define('HERO_ENV', 'PROD');
@@ -17,14 +15,16 @@ class Hero {
 
     if(!defined('APPLICATION_PATH')) define('APPLICATION_PATH', get_template_directory());
 
-    if(!defined('RWMB_VER')) $this->loadMetaBox();
+    if(!defined('RWMB_VER')) self::loadMetaBox();
 
-    self::$app = new App();
-    new ModelLoader(self::$app);
+    Store::set('relation_belongs_to', []);
+    Store::set('relation_has_many', []);
+
+    Register::models();
 
   }
 
-  private function loadMetaBox() {
+  private static function loadMetaBox() {
 
     if(HERO_ENV == 'PROD') {
       $path = explode('wp-content', realpath(COMMOM_VENDOR . "/rilwis/meta-box/"));
@@ -49,8 +49,6 @@ class Hero {
 
   }
 
-  public function get(){
-    return self::$app;
-  }
-
 }
+
+Loader::load();

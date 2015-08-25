@@ -17,15 +17,9 @@
     "phpunit/phpunit": "3.7.*"
   },
   "autoload": {
-    "files": [
-      "src/Hero.php",
-      "src/api/AppModel.php",
-      "src/api/AppTaxonomy.php"
-    ],
-    "psr-4": {
-      "Hero\\Core\\": "src/core/",
-      "Hero\\Exceptions\\": "src/exceptions/",
-      "Hero\\Util\\": "src/utility/"
+    "files": [ "src/bootstrap"],
+    "psr-0": {
+      "Hero\\": "src/"
     }
   },
   "scripts": {
