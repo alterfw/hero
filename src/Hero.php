@@ -16,7 +16,7 @@ class Hero {
 
     if(!defined('APPLICATION_PATH')) define('APPLICATION_PATH', get_template_directory());
 
-    $this->loadMetaBox();
+    if(!defined('RWMB_VER')) $this->loadMetaBox();
 
     self::$app = new App();
     new ModelLoader(self::$app);

@@ -11,7 +11,6 @@ define('ABSPATH', __DIR__);
 define('ALTER', __DIR__. '/../');
 define('ALTER_VENDOR', __DIR__. '/../vendor/alterfw');
 define('APPLICATION_PATH', __DIR__. '/fixtures');
-define('RWMB_URL', '');
 
 $hero = new Hero();
 $app = $hero->get();
