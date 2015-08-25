@@ -29,18 +29,18 @@ abstract class Model extends Queryable {
   }
 
   private function registerBelongs($fields){
-    if(is_array($this->belongs_to)){
+    if(!empty($this->belongs_to) && is_array($this->belongs_to)){
       foreach($this->belongs_to as $model) $fields[$model] = $this->registerRelation($model, 'belongs_to');
-    } else if(is_string($this->belongs_to)){
+    } else if(!empty($this->belongs_to) && is_string($this->belongs_to)){
       $fields[$this->belongs_to] = $this->registerRelation($this->belongs_to, 'belongs_to');
     }
     return $fields;
   }
 
   private function registerHasMany($fields) {
-    if(is_array($this->has_many)){
+    if(!empty($this->has_many) && is_array($this->has_many)){
       foreach($this->has_many as $model) $fields[$model] = $this->registerRelation($model, 'has_many');
-    } else if(is_string($this->has_many)){
+    } else if(!empty($this->has_many) && is_string($this->has_many)){
       $fields[$this->has_many] = $this->registerRelation($this->has_many, 'has_many');
     }
     return $fields;

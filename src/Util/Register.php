@@ -11,16 +11,16 @@ namespace Hero\Util;
 
 class Register {
 
-  private $instance;
-  private $meta;
+  private static $instance;
+  private static $meta;
   private $models = [];
 
-  private function getInstance() {
+  private static function getInstance() {
     if(empty(self::$instance)) self::$instance = new Register();
     return self::$instance;
   }
 
-  private function getMeta() {
+  private static function getMeta() {
     if(empty(self::$meta)) self::$meta = new RegisterMetabox();
     return self::$meta;
   }
@@ -49,10 +49,11 @@ class Register {
   private static function post_type($model) {
 
     $labels = $model->getLabels();
+    $icon = $model->getIcon();
 
     $singular = (empty($labels[0])) ? ucfirst(get_class($model)) : $labels[0];
     $plural = (empty($labels[1])) ? ucfirst(get_class($model).'s') : $labels[1];
-    $icon = (empty($model->getIcon())) ? 'dashicons-admin-post' : $model->getIcon();
+    $icon = (empty($icon)) ? 'dashicons-admin-post' : $icon;
     $tax = $model->getTaxonomies();
     $fields = $model->getFields();
 
