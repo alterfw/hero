@@ -133,7 +133,7 @@ class Post {
     $belongs_to = Store::get('relation_belongs_to');
     //var_dump($belongs_to);
     foreach($belongs_to as $bel){
-      if($bel['target'] == $model->getPostType()  && !in_array($bel['model'], $exclude_relations)){
+      if($bel['target'] == $post_type  && !in_array($bel['model'], $exclude_relations)){
         $belqr = new \WP_Query([
           'post_type'      => $bel['model'],
           'meta_key'       => $bel['target'],
@@ -144,7 +144,7 @@ class Post {
         } else {
           $this->{$bel['model']} = null;
         }
-      } else if($bel['model'] == $model->getPostType()){
+      } else if($bel['model'] == $post_type){
         $this->{$bel['target']} = new Post($this->{$bel['target']}, $bel['target'], [$bel['model']]);
       }
     }
