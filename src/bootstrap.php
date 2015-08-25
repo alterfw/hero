@@ -33,7 +33,7 @@ class Loader {
       $url = 'http://localhost';
     }
 
-    RWMB_Loader::load($url, COMMOM_VENDOR . "/rilwis/meta-box/");
+    \RWMB_Loader::load($url, COMMOM_VENDOR . "/rilwis/meta-box/");
 
     require_once RWMB_INC_DIR . 'common.php';
     require_once RWMB_INC_DIR . 'field.php';
