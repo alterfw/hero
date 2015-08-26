@@ -31,7 +31,7 @@ class Register {
 
   public static function models() {
     add_action( 'init', array('\Hero\Util\Register', 'post_types'), 0 );
-    add_filter( 'rwmb_meta_boxes', array('\Hero\Util\Register', 'meta_boxes') );
+    self::getMeta()->register();
     foreach(get_declared_classes() as $class){
       if(get_parent_class($class) == 'Hero\Core\Model') self::model($class);
     }
@@ -131,10 +131,6 @@ class Register {
 
   public static function post_types() {
     foreach(self::getInstance()->models as $model) self::post_type($model);
-  }
-
-  public static function meta_boxes() {
-    self::getMeta()->doRegister();
   }
 
 }

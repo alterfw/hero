@@ -13,7 +13,6 @@ class RegisterMetabox {
   * @param $fields
   */
   public function add($post_type, $fields){
-
     if($fields){
       $this->boxes[$post_type] = $fields;
     }
