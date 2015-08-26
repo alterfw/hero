@@ -31,6 +31,15 @@ class Store {
     array_push($this->data[$key], $value);
   }
 
+  public function _pushIfNotPresent($key, $value){
+    $need_to_add = true;
+    foreach($this->data[$key] as $item){
+      if(count(array_diff_assoc($item, $value)) == 0) $need_to_add = false;
+    }
+    if($need_to_add) $this->push($key, $value);
+
+  }
+
   public static function set($key, $value) {
     self::getInstance()->_set($key, $value);
   }
@@ -41,6 +50,10 @@ class Store {
 
   public static function push($key, $value){
     self::getInstance()->_push($key, $value);
+  }
+
+  public static function pushIfNotPresent($key, $value) {
+    self::getInstance()->_pushIfNotPresent($key, $value);
   }
 
 }

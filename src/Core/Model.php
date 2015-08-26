@@ -10,11 +10,20 @@ namespace Hero\Core;
 
 use Hero\Util\Store;
 
-abstract class Model extends Queryable {
+class Model extends Queryable {
 
+  private static $instance;
+
+  private static function getInstance() {
+    if(empty(self::$instance)) {
+      $r = new \ReflectionClass(get_called_class());
+      self::$instance = $r->newInstanceArgs();
+    }
+    return self::$instance;
+  }
 
   private function registerRelation($model, $relation) {
-    Store::push('relation_'.$relation, ['model' => strtolower(get_class($this)), 'target'=> $model]);
+    Store::pushIfNotPresent('relation_'.$relation, ['model' => strtolower(get_class($this)), 'target'=> $model]);
     $type = ($relation == 'belongs_to') ? 'list' : 'checkbox_list';
     return [
       'type' => $type,
@@ -46,31 +55,51 @@ abstract class Model extends Queryable {
     return $fields;
   }
 
-  public function getFields() {
+  private function _getFields() {
     $fields = (empty($this->fields)) ? [] : $this->fields;
     $fields = $this->registerBelongs($fields);
     $fields = $this->registerHasMany($fields);
     return $fields;
   }
 
-  public function getRelations() {
+  public static function getFields() {
+    return self::getInstance()->_getFields();
+  }
+
+  private function _getRelations() {
     $belongs_to = (!empty($this->belongs_to)) ? $this->belongs_to : [];
     $has_many = (!empty($this->has_many)) ? $this->has_many : [];
     return compact($belongs_to, $has_many);
   }
 
-  public function getTaxonomies() {
+  public static function getRelations() {
+    return self::getInstance()->_getRelations();
+  }
+
+  private function _getTaxonomies() {
     if(!empty($this->taxonomies)) return $this->taxonomies;
     return [];
   }
 
-  public function getLabels() {
+  public static function getTaxonomies() {
+    return self::getInstance()->_getTaxonomies();
+  }
+
+  private function _getLabels() {
     if(!empty($this->labels)) return $this->labels;
     return [];
   }
 
-  public function getIcon() {
+  public static function getLabels() {
+    return self::getInstance()->_getLabels();
+  }
+
+  private function _getIcon() {
     if(!empty($this->icon)) return $this->icon;
+  }
+
+  public static function getIcon() {
+    return self::getInstance()->_getIcon();
   }
 
 }
