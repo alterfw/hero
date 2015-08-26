@@ -1,6 +1,8 @@
 <?php
 
-class User extends AppModel {
+use Hero\Core\Model;
+
+class User extends Model {
 
   public $fields = [
 

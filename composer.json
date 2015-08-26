@@ -23,6 +23,11 @@
       "Hero\\Util\\": "src/Util/"
     }
   },
+  "autoload-dev": {
+    "classmap": [
+      "test/fixtures/model/"
+    ]
+  },
   "scripts": {
     "test": "phpunit -c phpunit.dist.xml"
   }

@@ -13,7 +13,7 @@ class Loader {
     if(!defined('ALTER_VENDOR')) define('ALTER_VENDOR', ALTER . "/..");
     if(!defined('COMMOM_VENDOR')) define('COMMOM_VENDOR', ALTER . "/../..");
 
-    if(!defined('APPLICATION_PATH')) define('APPLICATION_PATH', get_template_directory());
+    if(!defined('APPLICATION_PATH')) define('APPLICATION_PATH', \get_template_directory());
 
     if(!defined('RWMB_VER')) self::loadMetaBox();
 
@@ -28,7 +28,7 @@ class Loader {
 
     if(HERO_ENV == 'PROD') {
       $path = explode('wp-content', realpath(COMMOM_VENDOR . "/rilwis/meta-box/"));
-      $url = get_site_url().'/wp-content'.$path[1].'/';
+      $url = \get_site_url().'/wp-content'.$path[1].'/';
     } else {
       $url = 'http://localhost';
     }

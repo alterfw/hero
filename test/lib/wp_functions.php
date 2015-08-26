@@ -4,6 +4,12 @@ function get_bloginfo() {
   return '';
 }
 
+function get_template_directory() {
+  return '';
+}
+
+var_dump('olar');
+
 function get_site_url() {
   return '';
 }

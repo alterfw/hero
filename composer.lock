@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "aa45f60e9df995b81553ae2a68bdc684",
+    "hash": "1f70ae4d2e7d1e985da8f3178b05db90",
     "packages": [
         {
             "name": "alterfw/common",
