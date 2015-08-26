@@ -25,11 +25,15 @@ class Register {
     return self::$meta;
   }
 
+  private static function callStatic($class, $method) {
+    return call_user_func($class.'::'.$method);
+  }
+
   public static function models() {
     add_action( 'init', array('\Hero\Util\Register', 'post_types'), 0 );
     add_filter( 'rwmb_meta_boxes', array('\Hero\Util\Register', 'meta_boxes') );
     foreach(get_declared_classes() as $class){
-      if($class instanceof Hero\Core\Model) self::model($class);
+      if(get_parent_class($class) == 'Hero\Core\Model') self::model($class);
     }
   }
 
@@ -39,23 +43,23 @@ class Register {
 
   private static function model($model) {
     self::getInstance()->addModel($model);
-    self::getMeta()->add(self::getType($model), $model->getFields());
+    self::getMeta()->add(self::getType($model), self::callStatic($model, 'getFields'));
   }
 
   private static function getType($model) {
-    return strtolower(get_class($model));
+    return strtolower($model);
   }
 
   private static function post_type($model) {
 
-    $labels = $model->getLabels();
-    $icon = $model->getIcon();
+    $labels = self::callStatic($model, 'getLabels');
+    $icon = self::callStatic($model, 'getIcon');
 
-    $singular = (empty($labels[0])) ? ucfirst(get_class($model)) : $labels[0];
-    $plural = (empty($labels[1])) ? ucfirst(get_class($model).'s') : $labels[1];
+    $singular = (empty($labels[0])) ? ucfirst($model) : $labels[0];
+    $plural = (empty($labels[1])) ? ucfirst($model.'s') : $labels[1];
     $icon = (empty($icon)) ? 'dashicons-admin-post' : $icon;
-    $tax = $model->getTaxonomies();
-    $fields = $model->getFields();
+    $tax = self::callStatic($model, 'getTaxonomies');
+    $fields = self::callStatic($model, 'getFields');
 
     $supports = array();
     $wp_fields = array(
@@ -97,7 +101,7 @@ class Register {
     );
 
     $args = array(
-      'label'               => __( get_class($model) , 'text_domain' ),
+      'label'               => __( $model , 'text_domain' ),
       'description'         => __( '', 'text_domain' ),
       'labels'              => $labels,
       'supports'            => $supports,
