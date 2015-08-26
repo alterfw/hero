@@ -51,8 +51,4 @@ class Loader {
 
 }
 
-function load_hero(){
-  Loader::load();
-}
-
-add_action( 'after_setup_theme', '\Hero\load_hero' );
+Loader::load();
