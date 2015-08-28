@@ -8,6 +8,7 @@
 
 namespace Hero\Util;
 use Hero\Core\ModelLoader;
+use Hero\Util\Store;
 
 class Register {
 
@@ -57,6 +58,8 @@ class Register {
 
     $labels = self::callStatic($model, 'getLabels');
     $icon = self::callStatic($model, 'getIcon');
+
+    Store::push('models', self::callStatic($model, '_serialize'));
 
     $singular = (empty($labels[0])) ? ucfirst($model) : $labels[0];
     $plural = (empty($labels[1])) ? ucfirst($model.'s') : $labels[1];

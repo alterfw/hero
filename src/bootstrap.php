@@ -19,6 +19,7 @@ class Loader {
 
     Store::set('relation_belongs_to', []);
     Store::set('relation_has_many', []);
+    Store::set('models', []);
 
     Register::models();
 
