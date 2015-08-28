@@ -2,11 +2,6 @@
 
 class ModelSpec extends HeroTestCase {
 
-  function test_if_default_models_has_been_loaded(){
-    $this->assertTrue(class_exists('Post'), 'Asserts if the Post model has been loaded');
-    $this->assertTrue(class_exists('Page'), 'Asserts if the Page model has been loaded');
-  }
-
   function test_if_custom_models_has_been_loaded() {
     $this->assertTrue(class_exists('User'), 'Asserts if the User model has been loaded');
     $this->assertTrue(class_exists('Purchase'), 'Asserts if the Purchase model has been loaded');
