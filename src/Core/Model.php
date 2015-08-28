@@ -14,9 +14,14 @@ class Model extends Queryable implements \Serializable {
 
   private static $instance;
 
+  static public function getName() {
+    return get_called_class();
+  }
+
   private static function getInstance() {
-    if(empty(self::$instance)) {
-      $r = new \ReflectionClass(get_called_class());
+    $name = get_called_class();
+    if(empty(self::$instance) || get_class(self::$instance) != $name) {
+      $r = new \ReflectionClass($name);
       self::$instance = $r->newInstanceArgs();
     }
     return self::$instance;
