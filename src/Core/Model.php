@@ -10,7 +10,7 @@ namespace Hero\Core;
 
 use Hero\Util\Store;
 
-class Model extends Queryable implements Serializable {
+class Model extends Queryable implements \Serializable {
 
   private static $instance;
 
@@ -106,7 +106,7 @@ class Model extends Queryable implements Serializable {
 
     $data = [
       'post_type' => strtolower(get_class($this)),
-      'fields' => $this->_getFields(),
+      'fields' => $this->fields,
       'icon' => $this->_getIcon(),
       'labels' => $this->_getLabels(),
       'relations' => $this->_getRelations(),
@@ -115,6 +115,10 @@ class Model extends Queryable implements Serializable {
 
     return serialize($data);
 
+  }
+
+  public function unserialize($str) {
+    // do nothing
   }
 
   public static function _serialize(){
