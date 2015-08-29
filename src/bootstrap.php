@@ -8,11 +8,18 @@ class Loader {
   public static function load() {
 
     // Constants
+    $ci = getenv('CI');
+    $hero_env = getenv('HERO_ENV');
+
+    if(!empty($ci) && !defined('HERO_ENV')) define('HERO_ENV', 'TEST');
+    if(!empty($hero_env) && !defined('HERO_ENV')) define('HERO_ENV', $hero_env);
+
+    if(defined('HERO_ENV') && HERO_ENV == 'TEST') require_once __DIR__.'/../test/bootstrap.php';
+
     if(!defined('HERO_ENV')) define('HERO_ENV', 'PROD');
     if(!defined('ALTER')) define('ALTER', __DIR__ . "/..");
     if(!defined('ALTER_VENDOR')) define('ALTER_VENDOR', ALTER . "/..");
     if(!defined('COMMOM_VENDOR')) define('COMMOM_VENDOR', ALTER . "/../..");
-
     if(!defined('APPLICATION_PATH')) define('APPLICATION_PATH', \get_template_directory());
 
     if(!defined('RWMB_VER')) self::loadMetaBox();

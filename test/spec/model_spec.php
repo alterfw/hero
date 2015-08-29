@@ -1,6 +1,6 @@
 <?php
 
-class ModelSpec extends HeroTestCase {
+class ModelSpec extends PHPUnit_Framework_TestCase {
 
   function test_if_custom_models_has_been_loaded() {
     $this->assertTrue(class_exists('User'), 'Asserts if the User model has been loaded');

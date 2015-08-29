@@ -14,7 +14,7 @@
     "rilwis/meta-box": "dev-master"
   },
   "require-dev": {
-    "phpunit/phpunit": "3.7.*"
+    "phpunit/phpunit": "3.x"
   },
   "autoload": {
     "files": [ "src/bootstrap.php"],
@@ -29,7 +29,7 @@
     ]
   },
   "scripts": {
-    "test": "phpunit -c phpunit.dist.xml"
+    "test": "HERO_ENV=TEST phpunit"
   }
 
 }
