@@ -2,6 +2,11 @@
 
 class ModelSpec extends PHPUnit_Framework_TestCase {
 
+  function setUP() {
+    \Hero\Util\Register::post_types();
+    parent::setUP();
+  }
+
   function test_if_custom_models_has_been_loaded() {
     $this->assertTrue(class_exists('User'), 'Asserts if the User model has been loaded');
     $this->assertTrue(class_exists('Purchase'), 'Asserts if the Purchase model has been loaded');
@@ -39,6 +44,21 @@ class ModelSpec extends PHPUnit_Framework_TestCase {
   function test_if_models_return_an_array() {
     $this->assertTrue(is_array(User::find()), 'Check if the model->find() method returns an array');
     $this->assertTrue((count(User::find()) == 0), 'Check if the model->find() method returns 0 items');
+  }
+
+  function test_if_models_has_automagic_relation_methods() {
+    $this->assertTrue(is_array(Purchase::findByUser(1)), 'Check if automagic belongs_to method works');
+    $this->assertTrue(is_array(Purchase::findByProduct(1)), 'Check if automagic has_many method works');
+  }
+
+  function test_if_models_has_automagic_field_methods() {
+    $this->assertTrue(is_array(Purchase::findByDate(1)), 'Check if automagic field method works on Purchase');
+    $this->assertTrue(is_array(Product::findByPrice(1)), 'Check if automagic field method works on Product');
+  }
+
+  function test_if_an_invalid_automagic_method_throws_exception() {
+    $this->setExpectedException('Exception', "Trying to access a method that doesn't exists");
+    $this->assertTrue(is_array(Purchase::findByPrice(1)), 'Check if automagic field method works on Purchase');
   }
 
   function test_if_wp_query_is_done_right() {

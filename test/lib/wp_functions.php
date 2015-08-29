@@ -39,3 +39,11 @@ function get_locale() {
 function load_textdomain() {
 
 }
+
+function register_post_type($bla, $blou) {
+
+}
+
+function __($a) {
+
+}

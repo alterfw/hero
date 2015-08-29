@@ -99,7 +99,7 @@ class Queryable {
 
       }else{
 
-        throw new Exception("Trying to access a method that doesn't exists");
+        throw new \Exception("Trying to access a method that doesn't exists");
 
       }
 

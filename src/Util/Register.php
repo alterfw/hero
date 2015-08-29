@@ -91,19 +91,19 @@ class Register {
     $capabilities = array();
 
     $labels = array(
-      'name'                => __($plural),
-      'singular_name'       => __($singular),
-      'menu_name'           => __($plural),
-      'parent_item_colon'   => __( 'Parent Item:'),
-      'all_items'           => __($plural),
-      'view_item'           => __( 'View') . ' '. __($plural),
-      'add_new_item'        => __( 'Add' ) . ' '. __($singular),
-      'add_new'             => __( 'Add') .' '. __($singular),
-      'edit_item'           => __( 'Edit') . ' '. __($singular),
-      'update_item'         => __( 'Update'). ' '. __($singular),
-      'search_items'        => __( 'Search'). ' '. __($singular),
-      'not_found'           => __( 'Not found'),
-      'not_found_in_trash'  => __( 'Not found in Trash'),
+      'name'                => \__($plural),
+      'singular_name'       => \__($singular),
+      'menu_name'           => \__($plural),
+      'parent_item_colon'   => \__( 'Parent Item:'),
+      'all_items'           => \__($plural),
+      'view_item'           => \__( 'View') . ' '. \__($plural),
+      'add_new_item'        => \__( 'Add' ) . ' '. \__($singular),
+      'add_new'             => \__( 'Add') .' '. \__($singular),
+      'edit_item'           => \__( 'Edit') . ' '. \__($singular),
+      'update_item'         => \__( 'Update'). ' '. \__($singular),
+      'search_items'        => \__( 'Search'). ' '. \__($singular),
+      'not_found'           => \__( 'Not found'),
+      'not_found_in_trash'  => \__( 'Not found in Trash'),
     );
 
     $args = array(
