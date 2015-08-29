@@ -74,7 +74,9 @@ class Model extends Queryable implements \Serializable {
   private function _getRelations() {
     $belongs_to = (!empty($this->belongs_to)) ? $this->belongs_to : [];
     $has_many = (!empty($this->has_many)) ? $this->has_many : [];
-    return compact($belongs_to, $has_many);
+    if(is_string($belongs_to)) $belongs_to = [$belongs_to];
+    if(is_string($has_many)) $has_many = [$has_many];
+    return ['belongs_to'=>$belongs_to, 'has_many' => $has_many];
   }
 
   public static function getRelations() {
