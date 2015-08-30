@@ -144,6 +144,27 @@ class Queryable {
 
   }
 
+  public static function paginate($limit = null, $paged = null) {
+    return self::paginateWithOptions([], $limit, $paged);
+  }
+
+  public static function paginateWithOptions($options, $limit = null, $paged = null) {
+
+    if($paged == null){
+      $paged = ( \get_query_var('paged') ) ? \get_query_var('paged') : 1;
+    }
+
+    if(empty($limit)){
+      $limit = \get_option('posts_per_page');
+    }
+
+    return self::find($options, [
+      'paginate_limit' => $limit,
+      'paginate_page' => $paged
+    ]);
+
+  }
+
   public static function all() {
     self::find();
   }
@@ -190,12 +211,6 @@ class Queryable {
   }
 
   public static function find($options = null, $params = []){
-
-    // Reset the paginated options
-    if(!empty($params['paginated'])){
-      $params['paginate_page'] = false;
-      $params['paginate_limit'] = false;
-    }
 
     $attrs = self::buildQuery($options);
 

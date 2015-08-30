@@ -47,3 +47,11 @@ function register_post_type($bla, $blou) {
 function __($a) {
 
 }
+
+function get_query_var($var) {
+  return 0;
+}
+
+function get_option($key) {
+  return 0;
+}

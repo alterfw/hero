@@ -78,6 +78,25 @@ Retrives an item matching the slug passed as argument
 
 Retrieves an array of items matching the passed taxonomy and term
 
+### paginate($limit, $offset)
+
+* $limit: Integer (optional)
+* $offset: Integer (optional)
+
+Returns an paginated array of items
+
+```php
+$cars = Car::paginate();
+```
+
+### paginateWithOptions($options, $limit, $offset)
+
+* $options: Array of [WP_Query](https://codex.wordpress.org/Class_Reference/WP_Query) arguments
+* $limit: Integer (optional)
+* $offset: Integer (optional)
+
+Returns an paginated array of items
+
 ## Automagic find() methods
 
 Hero allows you to use automagic *find()* methods according to you custom fields.

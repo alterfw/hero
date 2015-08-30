@@ -46,6 +46,11 @@ class ModelSpec extends PHPUnit_Framework_TestCase {
     $this->assertTrue((count(User::find()) == 0), 'Check if the model->find() method returns 0 items');
   }
 
+  function test_model_pagination() {
+    $this->assertTrue(is_array(User::paginate()), 'Check if the model->paginate() method returns an array');
+    $this->assertTrue(is_array(User::paginateWithOptions([])), 'Check if the model->paginateWithOptions() method returns an array');
+  }
+
   function test_if_models_has_automagic_relation_methods() {
     $this->assertTrue(is_array(Purchase::findByUser(1)), 'Check if automagic belongs_to method works');
     $this->assertTrue(is_array(Purchase::findByProduct(1)), 'Check if automagic has_many method works');
