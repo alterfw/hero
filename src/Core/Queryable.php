@@ -166,7 +166,7 @@ class Queryable {
   }
 
   public static function all() {
-    self::find();
+    return self::find();
   }
 
   public static function findBySlug($slug) {
