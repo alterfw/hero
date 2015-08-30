@@ -17,10 +17,4 @@ Require the composer autoload file into your `functions.php`:
 require "vendor/autoload.php";
 ```
 
-And Hero will be ready:
-
-```php
-$hero = new Hero();
-$app = $hero->get();
-$books = $app->books->find();
-```
+And Hero will be ready!
