@@ -4,10 +4,10 @@ Using Hero you can customize the menu labels on WordPress dashboard:
 
 ```
 <?php
-class Car extends AppModel {
+use Hero\Core\Model;
+class Car extends Model {
 
-  public $singular = "Car";
-  public $plural = "Cars";
+  public $labels = ["Car", "Cars"];
 
 }
 ```
@@ -16,7 +16,8 @@ You can also customize the icon that will appear on WordPress dashboard:
 
 ```
 <?php
-class Car extends AppModel {
+use Hero\Core\Model;
+class Car extends Model {
 
   public $icon = "dashicons-admin-home";
 

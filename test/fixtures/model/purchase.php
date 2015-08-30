@@ -1,6 +1,8 @@
 <?php
 
-class Purchase extends AppModel {
+use Hero\Core\Model;
+
+class Purchase extends Model {
 
   public $belongs_to = 'user';
   public $has_many = 'product';

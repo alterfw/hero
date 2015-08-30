@@ -1,6 +1,8 @@
 <?php
 
-class Product extends AppModel {
+use Hero\Core\Model;
+
+class Product extends Model {
 
   public $fields = [
 

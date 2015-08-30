@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cff8e1c38129c60af6ef9134ab10fda2",
+    "hash": "b70b8850809360e178a599d33d9b3260",
     "packages": [
         {
             "name": "alterfw/common",
@@ -41,23 +41,35 @@
             "time": "2015-08-16 00:42:33"
         },
         {
-            "name": "alterfw/meta-box",
+            "name": "rilwis/meta-box",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/alterfw/meta-box.git",
-                "reference": "29cb013dfef1dfeecf8ff0c61db5b86fa38a62d5"
+                "url": "https://github.com/rilwis/meta-box.git",
+                "reference": "305b6639ff14a0f367d2798f9263bb61a63c63cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/alterfw/meta-box/zipball/29cb013dfef1dfeecf8ff0c61db5b86fa38a62d5",
-                "reference": "29cb013dfef1dfeecf8ff0c61db5b86fa38a62d5",
+                "url": "https://api.github.com/repos/rilwis/meta-box/zipball/305b6639ff14a0f367d2798f9263bb61a63c63cb",
+                "reference": "305b6639ff14a0f367d2798f9263bb61a63c63cb",
                 "shasum": ""
             },
             "type": "library",
+            "autoload": {
+                "files": [
+                    "meta-box-loader.php"
+                ],
+                "classmap": [
+                    "inc/fields",
+                    "inc/common.php",
+                    "inc/field.php",
+                    "inc/helpers.php",
+                    "inc/meta-box.php"
+                ]
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GPLv2"
+                "GPL-2.0"
             ],
             "authors": [
                 {
@@ -68,74 +80,17 @@
                 }
             ],
             "description": "Easily create custom meta boxes in WordPress.",
-            "homepage": "http://www.deluxeblogtips.com/meta-box/",
+            "homepage": "http://metabox.io",
             "keywords": [
+                "custom-field",
                 "meta-box",
                 "select2",
                 "ui",
                 "wordpress",
+                "wordpress-plugin",
                 "wp-admin"
             ],
-            "time": "2015-08-16 04:22:13"
-        },
-        {
-            "name": "alterfw/php-form-generator",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/alterfw/PHP-Form-Generator-Lib.git",
-                "reference": "1c0c4f6683aafc4700924f3a9703ebd4a6158e0d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/alterfw/PHP-Form-Generator-Lib/zipball/1c0c4f6683aafc4700924f3a9703ebd4a6158e0d",
-                "reference": "1c0c4f6683aafc4700924f3a9703ebd4a6158e0d",
-                "shasum": ""
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Lucas Pelegrino",
-                    "email": "lucas.wxp@gmail.com"
-                }
-            ],
-            "description": "This library has the goal of make simple the creation and population of HTML forms",
-            "time": "2014-07-04 02:46:40"
-        },
-        {
-            "name": "alterfw/wordpress-for-developers",
-            "version": "v0.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/alterfw/Wordpress-for-Developers.git",
-                "reference": "bd57fc83389d7e7d4eaf3892dd75b1755d72261f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/alterfw/Wordpress-for-Developers/zipball/bd57fc83389d7e7d4eaf3892dd75b1755d72261f",
-                "reference": "bd57fc83389d7e7d4eaf3892dd75b1755d72261f",
-                "shasum": ""
-            },
-            "require": {
-                "alterfw/php-form-generator": "dev-master"
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Lucas Pelegrino",
-                    "email": "lucas.wxp@gmail.com"
-                }
-            ],
-            "description": "A library to create CRUD elements in Wordpress",
-            "time": "2014-07-04 11:02:04"
+            "time": "2015-08-22 02:51:32"
         }
     ],
     "packages-dev": [
@@ -554,8 +509,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "alterfw/meta-box": 20,
-        "alterfw/php-form-generator": 20
+        "rilwis/meta-box": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
