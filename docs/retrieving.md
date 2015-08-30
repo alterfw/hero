@@ -54,9 +54,9 @@ foreach(Car:all() as $car){
 
 ## Model methods
 
-Retrieves an array with all items
-
 ### all()
+
+Retrieves an array with all items
 
 ### find($options)
 
