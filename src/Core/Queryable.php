@@ -222,8 +222,10 @@ class Queryable {
       $attrs['limit'] = -1;
     }
 
+    $klass = ucfirst(self::getType());
+
     if(!empty($attrs['p'])){
-      return new Post($attrs['p'], self::getType());
+      return new $klass($attrs['p']);
     }
 
     if(!empty($params['paginate_limit']))
@@ -244,7 +246,7 @@ class Queryable {
 
         $qr->the_post();
 
-        $obj = new Post(get_the_ID(), self::getType());
+        $obj = new $klass(get_the_ID());
         array_push($posts, $obj);
 
       }
