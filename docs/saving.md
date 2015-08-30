@@ -6,7 +6,7 @@ Just intantiate your model:
 
 ```php
 $car = new Car();
-``
+```
 
 Add some data:
 
