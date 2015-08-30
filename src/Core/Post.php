@@ -8,6 +8,7 @@ class Post {
   public function __construct($this_id, $post_type, $exclude_relations = []){
 
     $postObject = get_post($this_id);
+    $this->id = $this_id;
     $object = array();
     $className = ucfirst($post_type);
     $model = new $className;

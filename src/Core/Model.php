@@ -13,6 +13,47 @@ use Hero\Util\Store;
 class Model extends Queryable implements \Serializable {
 
   private static $instance;
+  
+  public function save() {
+
+    $default_wp_fields = [
+      'id',
+      'content',
+      'name',
+      'title',
+      'status',
+      'author',
+      'parent',
+      'excerpt',
+      'date',
+      'date_gmt'
+    ];
+
+    $default_fields = array_filter($this->_getFields(), function($var){
+      return is_array($var);
+    });
+
+    $fields = get_object_vars($this);
+
+    $meta = [];
+    $wp_fields = [];
+
+    foreach($fields as $field) {
+      if(in_array($field, $default_fields)) {
+        $meta[$field] = $this->{$field};
+      } else if(in_array($field, $default_wp_fields)) {
+        $wp_fields['post_'.$field] = $this->{$field};
+      }
+    }
+
+    $wp_fields['post_type'] = strtolower(get_called_class());
+    $id = wp_insert_post($wp_fields);
+
+    foreach($meta as $key => $value) {
+      update_post_meta($id, $key, $value);
+    }
+
+  }
 
   static public function getName() {
     return get_called_class();
