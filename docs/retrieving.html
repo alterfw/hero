@@ -79,8 +79,8 @@
                     <h1 id="retrieving-data">Retrieving data</h1>
 <p>Hero offers a simple and powerful API to retrieve data. Let's supose that you have this <code>Car</code> model:</p>
 <pre><code class="language-php">&lt;?php
-// car.php
-class Car extends AppModel {
+use Hero\Core\Model;
+class Car extends Model {
 
   public $fields = [
 
@@ -103,10 +103,10 @@ class Car extends AppModel {
 }</code></pre>
 <p>You can just call:</p>
 <pre><code>&lt;?php
-$cars = $app-&gt;car-&gt;find(); // Array of Cars</code></pre>
+$cars = Car::all(); // Array of Cars</code></pre>
 <p>And access the model fields:</p>
 <pre><code>&lt;?php
-foreach($app-&gt;car-&gt;find() as $car){
+foreach(Car:all() as $car){
 
   echo $car-&gt;title;
   echo $car-&gt;year;
@@ -117,6 +117,8 @@ foreach($app-&gt;car-&gt;find() as $car){
 
 }</code></pre>
 <h2 id="model-methods">Model methods</h2>
+<p>Retrieves an array with all items</p>
+<h3 id="all">all()</h3>
 <h3 id="findoptions">find($options)</h3>
 <ul>
 <li>$options: Array of <a href="https://codex.wordpress.org/Class_Reference/WP_Query">WP_Query</a> arguments</li>
@@ -139,16 +141,18 @@ foreach($app-&gt;car-&gt;find() as $car){
 <li>$limit: Integer (optional)</li>
 <li>$offset: Integer (optional)</li>
 </ul>
-<p>Returns an instance of the model class so you can chain any of the <em>find</em> methods:</p>
-<pre><code class="language-php">$cars = $app-&gt;car-&gt;paginate()-&gt;find();</code></pre>
-<h3 id="paginationtype">pagination($type)</h3>
+<p>Returns an paginated array of items</p>
+<pre><code class="language-php">$cars = Car::paginate();</code></pre>
+<h3 id="paginatewithoptionsoptions-limit-offset">paginateWithOptions($options, $limit, $offset)</h3>
 <ul>
-<li>$type: Boolean (optional)</li>
+<li>$options: Array of <a href="https://codex.wordpress.org/Class_Reference/WP_Query">WP_Query</a> arguments</li>
+<li>$limit: Integer (optional)</li>
+<li>$offset: Integer (optional)</li>
 </ul>
-<p>Returns an array of pages to show pagination links in the template, if <code>$type</code> is false only return the previous and next pages.</p>
+<p>Returns an paginated array of items</p>
 <h2 id="automagic-find-methods">Automagic find() methods</h2>
 <p>Hero allows you to use automagic <em>find()</em> methods according to you custom fields.</p>
-<pre><code>$cars = $app-&gt;car-&gt;findByYear(2015)</code></pre>
+<pre><code>$cars = Car::findByYear(2015);</code></pre>
 <p>This method will search all the cars that have the custom fields <code>year</code> with the <em>2015</em> value.</p>
                 </section>
 

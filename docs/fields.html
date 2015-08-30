@@ -79,8 +79,8 @@
                     <h1 id="setting-model-fields">Setting model fields</h1>
 <p>Hero has built in supprt to WordPress default fields such as title and thumbnail, you just need to set to true using the <code>$fields</code> attribute.</p>
 <pre><code class="language-php">&lt;?php
-// car.php
-class Car extends AppModel {
+use Hero\Core\Model;
+class Car extends Model {
 
   public $fields = [
 

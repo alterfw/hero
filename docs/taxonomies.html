@@ -80,13 +80,15 @@
 <p>You can also register taxonomies using Hero:</p>
 <pre><code>&lt;?php
 
-$app-&gt;registerTaxonomy('city', 'City', 'Cities');
-$app-&gt;registerTaxonomy('province', 'Province', 'Provinces');
-$app-&gt;registerTaxonomies();</code></pre>
+use use Hero\Core\Taxonomy;
+
+Taxonomy::register('city', 'City', 'Cities');
+Taxonomy::register('province', 'Province', 'Provinces');</code></pre>
 <h2 id="linking-to-models">Linking to models</h2>
 <p>And you can easily link taxonomies to models:</p>
 <pre><code>&lt;?php
-class CarModel extends AppModel{
+use use Hero\Core\Model;
+class CarModel extends Model {
 
   public $taxonomies = ['car_type', 'car_color'];
 

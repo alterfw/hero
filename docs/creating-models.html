@@ -78,12 +78,13 @@
                 <section id="content" class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
                     <h1 id="creating-models">Creating models</h1>
 <p>To create Hero models you need to create a directory named <code>model</code> in your theme's root directory.
-Inside the <code>model</code> folder you can create your model classes extending <code>AppModel</code>.</p>
+Inside the <code>model</code> folder you can create your model classes extending <code>Hero\Core\Model</code>.</p>
 <p><strong>Note:</strong> Hero needs that the file name match the class name to work properly.</p>
 <p><em>E.g.</em></p>
 <pre><code class="language-php">&lt;?php
 // car.php
-class Car extends AppModel {
+use Hero\Core\Model;
+class Car extends Model {
 
 }</code></pre>
                 </section>

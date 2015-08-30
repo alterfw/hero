@@ -80,21 +80,24 @@
 <p>In Hero you can specify relations between models such as <code>belongs_to</code> and <code>has_many</code>.</p>
 <p>Creates the <code>Car</code> model:</p>
 <pre><code>&lt;?php
-class Car extends AppModel {
+use Hero\Core\Model;
+class Car extends Model {
 
 }</code></pre>
 <p>Attachs a field of type <code>checkbox_list</code> with a list of cars into the <code>User</code> model:</p>
 <pre><code>&lt;?php
-class User extends AppModel {
+use Hero\Core\Model;
+class User extends Model {
 
-  $has_many = 'car';
+  public $has_many = 'car';
 
 }</code></pre>
 <p>Attachs a field of type <code>list</code> with a list of users into the <code>Apartment</code> model:</p>
 <pre><code>&lt;?php
-class Apartment extends AppModel {
+use Hero\Core\Model;
+class Apartment extends Model {
 
-  $belongs_to = 'user';
+  public $belongs_to = 'user';
 
 }</code></pre>
                 </section>
