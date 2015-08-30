@@ -29,16 +29,23 @@ class Model extends Queryable implements \Serializable {
       'date_gmt'
     ];
 
-    $default_fields = array_filter($this->_getFields(), function($var){
+    $default_fields_raw = array_filter($this->_getFields(), function($var){
       return is_array($var);
     });
 
-    $fields = get_object_vars($this);
+    $default_fields = [];
+    foreach($default_fields_raw as $key => $value) {
+      array_push($default_fields, $key);
+    }
+
+    $fields = get_object_vars($this);;
 
     $meta = [];
-    $wp_fields = [];
+    $wp_fields = [
+      'post_status' => 'publish'
+    ];
 
-    foreach($fields as $field) {
+    foreach($fields as $field => $value) {
       if(in_array($field, $default_fields)) {
         $meta[$field] = $this->{$field};
       } else if(in_array($field, $default_wp_fields)) {
