@@ -4,8 +4,8 @@ Hero has built in supprt to WordPress default fields such as title and thumbnail
 
 ```php
 <?php
-// car.php
-class Car extends AppModel {
+use Hero\Core\Model;
+class Car extends Model {
 
   public $fields = [
 

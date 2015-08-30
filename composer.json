@@ -14,22 +14,22 @@
     "rilwis/meta-box": "dev-master"
   },
   "require-dev": {
-    "phpunit/phpunit": "3.7.*"
+    "phpunit/phpunit": "3.x"
   },
   "autoload": {
-    "files": [
-      "src/Hero.php",
-      "src/api/AppModel.php",
-      "src/api/AppTaxonomy.php"
-    ],
+    "files": [ "src/bootstrap.php"],
     "psr-4": {
-      "Hero\\Core\\": "src/core/",
-      "Hero\\Exceptions\\": "src/exceptions/",
-      "Hero\\Util\\": "src/utility/"
+      "Hero\\Core\\": "src/Core/",
+      "Hero\\Util\\": "src/Util/"
     }
   },
+  "autoload-dev": {
+    "classmap": [
+      "test/fixtures/model/"
+    ]
+  },
   "scripts": {
-    "test": "phpunit -c phpunit.dist.xml"
+    "test": "HERO_ENV=TEST phpunit"
   }
 
 }

@@ -1,6 +1,9 @@
 # see http://about.travis-ci.org/docs/user/languages/php/ for more hints
 language: php
 
+env:
+- HERO_ENV=TEST
+
 # list any PHP version you want to test against
 php:
   # using major version aliases
@@ -24,4 +27,4 @@ matrix:
 
 before_script: composer install
 
-script: composer test
+script: ./vendor/bin/phpunit

@@ -28,7 +28,7 @@ class Post {
     $this->permalink = get_permalink($this->ID);
 
     // Default post taxonomies
-    if($model->getPostType() == "post" && empty($taxonomies)){
+    if($post_type == "post" && empty($taxonomies)){
       $taxonomies = array("post_tag", "category");
     }
 
@@ -103,7 +103,7 @@ class Post {
 
     $has_many = Store::get('relation_has_many');
     foreach($has_many as $many){
-      if($many['target'] == $model->getPostType() && !in_array($many['model'], $exclude_relations)){
+      if($many['target'] == $post_type && !in_array($many['model'], $exclude_relations)){
         $manyqr = new \WP_Query([
           'post_type'      => $many['model'],
           'meta_key'       => $many['target'],
@@ -118,7 +118,7 @@ class Post {
         } else {
           $this->{$many['model']} = [];
         }
-      } else if($many['model'] == $model->getPostType()){
+      } else if($many['model'] == $post_type){
         if(is_array($this->{$many['target']})){
           $ids = [];
           foreach($this->{$many['target']} as $item) array_push($ids, new Post($item, $many['target'], [$many['model']]));
@@ -133,7 +133,7 @@ class Post {
     $belongs_to = Store::get('relation_belongs_to');
     //var_dump($belongs_to);
     foreach($belongs_to as $bel){
-      if($bel['target'] == $model->getPostType()  && !in_array($bel['model'], $exclude_relations)){
+      if($bel['target'] == $post_type  && !in_array($bel['model'], $exclude_relations)){
         $belqr = new \WP_Query([
           'post_type'      => $bel['model'],
           'meta_key'       => $bel['target'],
@@ -144,7 +144,7 @@ class Post {
         } else {
           $this->{$bel['model']} = null;
         }
-      } else if($bel['model'] == $model->getPostType()){
+      } else if($bel['model'] == $post_type){
         $this->{$bel['target']} = new Post($this->{$bel['target']}, $bel['target'], [$bel['model']]);
       }
     }
@@ -152,7 +152,7 @@ class Post {
 
 
     // Include subpages
-    if($model->getPostType() == 'page'){
+    if($post_type == 'page'){
 
       $my_wp_query = new \WP_Query();
       $all_wp_pages = $my_wp_query->query(array('post_type' => 'page'));

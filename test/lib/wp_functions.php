@@ -4,6 +4,10 @@ function get_bloginfo() {
   return '';
 }
 
+function get_template_directory() {
+  return '';
+}
+
 function get_site_url() {
   return '';
 }
@@ -34,4 +38,20 @@ function get_locale() {
 
 function load_textdomain() {
 
+}
+
+function register_post_type($bla, $blou) {
+
+}
+
+function __($a) {
+
+}
+
+function get_query_var($var) {
+  return 0;
+}
+
+function get_option($key) {
+  return 0;
 }
