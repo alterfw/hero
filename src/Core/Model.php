@@ -56,6 +56,8 @@ class Model extends Queryable implements \Serializable {
     $wp_fields['post_type'] = strtolower(get_called_class());
     $id = wp_insert_post($wp_fields);
 
+    $this->id = $id;
+
     foreach($meta as $key => $value) {
       update_post_meta($id, $key, $value);
     }

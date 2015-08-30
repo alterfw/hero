@@ -38,6 +38,9 @@ menu:
         retrieving:
             text: Retrieving data
             relativeUrl: docs/retrieving.html
+        retrieving:
+            text: Saving data
+            relativeUrl: docs/saving.html
         dashboard:
             text: Dashboard customization
             relativeUrl: docs/dashboard.html
