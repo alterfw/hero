@@ -270,6 +270,52 @@ class Model extends Queryable implements \Serializable {
     return ucfirst($type);
   }
 
+  private function getImage($postObject, $key, $value){
+
+    $retorno = array();
+
+    if(empty($value['multiple']) || !$value['multiple']){
+
+      $image = get_post_meta($postObject->ID, $key, true);
+
+      $img = new \stdClass();
+
+      foreach( get_intermediate_image_sizes() as $s ){
+        $wp_image = wp_get_attachment_image_src( $image, $s);
+        $img->{$s} = $wp_image[0];
+      }
+
+      $wp_image = wp_get_attachment_image_src( $image, 'full');
+      $img->full = $wp_image[0];
+      $img->caption = get_post($image)->post_excerpt;
+
+      $retorno = $img;
+
+    }else{
+
+      $images = get_post_meta($postObject->ID, $key);
+
+      foreach($images as $image){
+
+        $img = new \stdClass();
+
+        foreach( get_intermediate_image_sizes() as $s ){
+          $wp_image = wp_get_attachment_image_src( $image, $s);
+          $img->{$s} = $wp_image[0];
+        }
+
+        $img->caption = get_post($image)->post_excerpt;
+
+        array_push($retorno, $img);
+
+      }
+
+    }
+
+    return $retorno;
+
+  }
+
   private function getFile($postObject, $key, $value){
 
     if(empty($value['multiple']) || !$value['multiple']){
