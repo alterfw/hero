@@ -287,9 +287,8 @@ class Model extends Queryable implements \Serializable {
 
       $wp_image = wp_get_attachment_image_src( $image, 'full');
       $img->full = $wp_image[0];
-      if (!empty(get_post($image))) {
-        $img->caption = get_post($image)->post_excerpt;
-      }
+      $img_post = get_post($image);
+      $img->caption = (!empty($img_post)) ? $img_post->post_excerpt : NULL;
 
       $retorno = $img;
 
