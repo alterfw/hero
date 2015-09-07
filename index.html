@@ -1,119 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
         <title>Hero</title>
-
-        <link rel="stylesheet" href="http://alterfw.github.io/hero/css/bootstrap.min.css">
-        <link rel="stylesheet" href="http://alterfw.github.io/hero/css/font-awesome.min.css">
-        <link rel="stylesheet" href="http://alterfw.github.io/hero/css/highlight.dark.css">
-        <link rel="stylesheet" href="http://alterfw.github.io/hero/css/main.css">
+        <meta name="description" content=""/>
+        <meta name="robots" content="index, follow"/>
+        <meta property="og:title" content="Hero"/>
+        <meta property="og:image" content="http://alterfw.github.io/heroassets/images/logo.png"/>
+        <meta property="og:site_name" content="Hero"/>
+        <meta property="og:url" content="http://alterfw.github.io/hero"/>
+        <meta property="og:description" content="Models in WordPress applications"/>
+        <meta property="og:type" content="website"/>
+        <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+        <link rel="stylesheet" href="http://alterfw.github.io/hero/assets/css/all.css"/>
+        <link rel="stylesheet" href="http://alterfw.github.io/hero/assets/css/custom.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
+        <script src="//use.typekit.net/yjz4fyo.js"></script>
+        <script>try{Typekit.load();}catch(e){}</script>
     </head>
-    <body>
+    <body style="padding-top: 5em">
 
-        <header class="navbar navbar-default navbar-fixed-top">
+          <div class="wrapper">
+    <div class="container-fluid">
 
-            <a class="navbar-brand" href="http://alterfw.github.io/hero/">
-                Hero
-                <small class="hidden-xs hidden-sm">
-                    Models in WordPress applications
-                </small>
-            </a>
-
-                            <a href="https://github.com/alterfw/hero">
-                    <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
-                </a>
-            
+        <header class="site-header">
+          <div class="site-title"><a href="http://alterfw.github.io/hero">Hero</a></div>
+          <div class="site-slogan">Models in WordPress applications</div>
         </header>
 
-        <main class="container-fluid">
-            <div class="row">
+    
+    <div class="row">
+    <div class="col-md-12">
+        <p class="lead">
+            Hero is a library that allows you easily create Models to your WordPress theme or plugin and interact with them through a simple and beautiful API.
+        </p>
+        <pre class="language-php"><code>$cars = Car::all(); // Gets all items in car post type
+</code></pre>
+    </div>
+</div>
 
-                
-                    <nav id="sidebar" class="col-sm-3 col-lg-2" role="navigation">
+<div class="row section">
 
-                        <ul class="nav nav-pills nav-stacked">
-                                                            <li class="">
-                                    <a href="http://alterfw.github.io/hero//">
-                                        Home
-                                    </a>
-                                </li>
-                                                            <li class="">
-                                    <a href="http://alterfw.github.io/hero/docs/creating-models.html">
-                                        Creating models
-                                    </a>
-                                </li>
-                                                            <li class="">
-                                    <a href="http://alterfw.github.io/hero/docs/fields.html">
-                                        Setting model fields
-                                    </a>
-                                </li>
-                                                            <li class="">
-                                    <a href="http://alterfw.github.io/hero/docs/relations.html">
-                                        Relationships
-                                    </a>
-                                </li>
-                                                            <li class="">
-                                    <a href="http://alterfw.github.io/hero/docs/taxonomies.html">
-                                        Taxonomies
-                                    </a>
-                                </li>
-                                                            <li class="">
-                                    <a href="http://alterfw.github.io/hero/docs/retrieving.html">
-                                        Retrieving data
-                                    </a>
-                                </li>
-                                                            <li class="">
-                                    <a href="http://alterfw.github.io/hero/docs/saving.html">
-                                        Saving data
-                                    </a>
-                                </li>
-                                                            <li class="">
-                                    <a href="http://alterfw.github.io/hero/docs/dashboard.html">
-                                        Dashboard customization
-                                    </a>
-                                </li>
-                                                    </ul>
+        <div class="col-md-6">
+            <a class="slim-button" href="http://alterfw.github.io/hero/docs"><i class="fa fa-book"></i><span>Documentation</span></a>
+    </div>
 
-                    </nav>
+        <div class="col-md-6">
+        <a class="slim-button" href="https://github.com/alterfw/ampersand-example" target="_blank"><i class="fa fa-question-circle"></i><span>See the example theme</span></a>
+    </div>
+    
+</div>
 
-                
-                <section id="content" class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
-                    <h1 id="hero">Hero</h1>
-<p><a href="https://travis-ci.org/alterfw/hero"><img src="https://travis-ci.org/alterfw/hero.svg?branch=master" alt="Build Status" /></a></p>
-<p>Hero is the Alter's main module, responsible for all the interaction with post types and taxonomies throught models.</p>
-<h2 id="instalation">Instalation</h2>
-<pre><code>composer require alterfw/hero</code></pre>
-<h2 id="getting-started">Getting started</h2>
-<p>Require the composer autoload file into your <code>functions.php</code>:</p>
-<pre><code class="language-php">require "vendor/autoload.php";</code></pre>
-<p>And Hero will be ready!</p>
-                </section>
+<div class="row section">
+    <div class="col-md-12">
+        <h1 class="divider"><span>Download &amp; Install</span></h1>
+        <p>
+            To install Hero you'll need <a href="https://getcomposer.org/" target="_blank">Composer</a>
+            dependency manager. Run this bash command in your theme's root folder to download
+            and install the latest stable version into your theme's <code>vendor/</code> directory.
+        </p>
+        <pre><code class="language-bash">composer require alterfw/hero</code></pre>
+        <p>
+            Next, require the Composer autoloader into your <code>functions.php</code>.
+        </p>
+        <pre><code class="language-php">&lt;?php
+require 'vendor/autoload.php';</code></pre>
 
-            </div>
-        </main>
+    </div>
+</div>
 
-        <footer>
-            <div class="container-fluid">
-                <p class="text-muted">
-                    website generated with <a href="http://couscous.io" title="Markdown website generator">Couscous</a>
-                </p>
-            </div>
-        </footer>
 
-        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-        <script src="//yastatic.net/highlightjs/8.2/highlight.min.js"></script>
+    </div>
 
-        <script>
-            $(function() {
-                $("section>h1").wrap('<div class="page-header" />');
-                // Syntax highlighting
-                hljs.initHighlightingOnLoad();
-            });
-        </script>
+    <footer class="site-footer">
+        <p>Created by <a href="http://vilar.cc">Sergio Vilar</a> based on <a href="http://www.slimframework.com/" target="_blank">Slim</a>.</p>
+    </footer>
 
-    </body>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="http://alterfw.github.io/hero/assets/scripts/build/production.js"></script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<a target="_blank" href="https://github.com/alterfw/docs-template"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+</body>
 </html>
