@@ -1,10 +1,10 @@
-# Taxonomies
+---
+title: Taxonomies
+---
 
 You can also register taxonomies using Hero:
 
-```
-<?php
-
+```php
 use use Hero\Core\Taxonomy;
 
 Taxonomy::register('city', 'City', 'Cities');
@@ -15,8 +15,7 @@ Taxonomy::register('province', 'Province', 'Provinces');
 
 And you can easily link taxonomies to models:
 
-```
-<?php
+```php
 use use Hero\Core\Model;
 class CarModel extends Model {
 

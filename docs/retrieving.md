@@ -1,9 +1,10 @@
-# Retrieving data
+---
+title: Retrieving data
+---
 
 Hero offers a simple and powerful API to retrieve data. Let's supose that you have this `Car` model:
 
 ```php
-<?php
 use Hero\Core\Model;
 class Car extends Model {
 
@@ -31,15 +32,13 @@ class Car extends Model {
 
 You can just call:
 
-```
-<?php
+```php
 $cars = Car::all(); // Array of Cars
 ```
 
 And access the model fields:
 
-```
-<?php
+```php
 foreach(Car:all() as $car){
 
   echo $car->title;
@@ -101,7 +100,7 @@ Returns an paginated array of items
 
 Hero allows you to use automagic *find()* methods according to you custom fields.
 
-```
+```php
 $cars = Car::findByYear(2015);
 ```
 

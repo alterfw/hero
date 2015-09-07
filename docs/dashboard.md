@@ -1,9 +1,10 @@
-# Dashboard customization
+---
+title: Dashboard customization
+---
 
 Using Hero you can customize the menu labels on WordPress dashboard:
 
-```
-<?php
+```php
 use Hero\Core\Model;
 class Car extends Model {
 
@@ -14,8 +15,7 @@ class Car extends Model {
 
 You can also customize the icon that will appear on WordPress dashboard:
 
-```
-<?php
+```php
 use Hero\Core\Model;
 class Car extends Model {
 

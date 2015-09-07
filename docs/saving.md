@@ -1,4 +1,6 @@
-# Retrieving data
+---
+title: Saving data
+---
 
 With Hero you can also save data.
 
