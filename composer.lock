@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b70b8850809360e178a599d33d9b3260",
+    "hash": "56ef1de607b95e82285f302b56fcb4ba",
     "packages": [
         {
             "name": "alterfw/common",
@@ -46,12 +46,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/rilwis/meta-box.git",
-                "reference": "305b6639ff14a0f367d2798f9263bb61a63c63cb"
+                "reference": "bec5cf71131434fc3d4bb29667c9a1d12dbaa66b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rilwis/meta-box/zipball/305b6639ff14a0f367d2798f9263bb61a63c63cb",
-                "reference": "305b6639ff14a0f367d2798f9263bb61a63c63cb",
+                "url": "https://api.github.com/repos/rilwis/meta-box/zipball/bec5cf71131434fc3d4bb29667c9a1d12dbaa66b",
+                "reference": "bec5cf71131434fc3d4bb29667c9a1d12dbaa66b",
                 "shasum": ""
             },
             "type": "library",
@@ -90,7 +90,7 @@
                 "wordpress-plugin",
                 "wp-admin"
             ],
-            "time": "2015-08-22 02:51:32"
+            "time": "2015-08-25 03:15:22"
         }
     ],
     "packages-dev": [
