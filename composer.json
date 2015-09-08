@@ -22,6 +22,7 @@
     "psr-4": {
       "Hero\\Core\\": "src/Core/",
       "Hero\\Util\\": "src/Util/"
+      "Hero\\Loader\\": "src/Loader/"
     }
   },
   "autoload-dev": {

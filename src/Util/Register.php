@@ -7,7 +7,7 @@
  */
 
 namespace Hero\Util;
-use Hero\Core\ModelLoader;
+use Hero\Loader\Model;
 use Hero\Util\Store;
 
 class Register {
@@ -34,7 +34,7 @@ class Register {
 
     add_action( 'init', array('\Hero\Util\Register', 'post_types'), 0 );
     self::getMeta()->register();
-    new ModelLoader();
+    new Model();
 
     foreach(get_declared_classes() as $class){
       if(get_parent_class($class) == 'Hero\Core\Model') self::model($class);
