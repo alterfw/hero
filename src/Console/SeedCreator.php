@@ -36,7 +36,7 @@ class SeedCreator extends TemplateCreator {
     $this->createDirectory('/seed');
     $this->render('Seed', '/seed/'.$name.'Seeder.php', ['name'=>$name]);
 
-    $output->writeln('Created '.APPLICATION_PATH.'/seed/'.$name.'Seeder.php');
+    $output->writeln('<info>Created</info> '.APPLICATION_PATH.'/seed/'.$name.'Seeder.php');
 
   }
 

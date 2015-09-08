@@ -36,7 +36,7 @@ class ModelCreator extends TemplateCreator {
     $this->createDirectory('/model');
     $this->render('Model', '/model/'.strtolower($name).'.php', ['name'=>$name]);
 
-    $output->writeln('Created '.APPLICATION_PATH.'/model/'.strtolower($name).'.php');
+    $output->writeln('<info>Created</info> '.APPLICATION_PATH.'/model/'.strtolower($name).'.php');
 
   }
 

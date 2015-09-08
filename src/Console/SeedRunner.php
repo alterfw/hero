@@ -27,11 +27,11 @@ class SeedRunner extends Command {
 
     $loader = new Seed('seed');
     foreach($loader->getInstances() as $instance) {
-      $output->writeln("Seeding ".get_class($instance));
+      $output->writeln("<info>Seeding</info> ".get_class($instance));
       $instance->run();
     }
 
-    $output->writeln("Done.");
+    $output->writeln("<info>Done</info>.");
 
   }
 
