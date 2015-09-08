@@ -1,18 +1,19 @@
 ---
-title: Creating models
+title: Installation
 ---
 
-To create Hero models you need to create a directory named `model` in your theme's root directory.
-Inside the `model` folder you can create your model classes extending `Hero\Core\Model`.
+Ampersand requires PHP 5.4.0 or newer.
 
-**Note:** Hero needs that the file name match the class name to work properly.
+Installation via [Composer](https://getcomposer.org/)
 
-*E.g.*
+    composer require alterfw/hero
+
+Insert into your `functions.php`:
 
 ```php
-// car.php
-use Hero\Core\Model;
-class Car extends Model {
-
-}
+require 'vendor/autoload.php';
 ```
+
+## License
+
+The MIT License (MIT). Please see [License File](https://github.com/alterfw/ampersand/blob/master/LICENSE) for more information.
