@@ -4,12 +4,12 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>Installation</title>
+        <title>Dashboard customization</title>
         <meta name="description" content=""/>
         <meta name="robots" content="index, follow"/>
-        <meta property="og:title" content="Installation"/>
+        <meta property="og:title" content="Dashboard customization"/>
         <meta property="og:image" content="http://alterfw.github.io/heroassets/images/logo.png"/>
-        <meta property="og:site_name" content="Installation"/>
+        <meta property="og:site_name" content="Dashboard customization"/>
         <meta property="og:url" content="http://alterfw.github.io/hero"/>
         <meta property="og:description" content="Models in WordPress applications"/>
         <meta property="og:type" content="website"/>
@@ -60,14 +60,22 @@
             </div>
     
           <div class="col-md-9" style="padding-left: 2em">
-        <h1>Installation</h1>
-        <p>Ampersand requires PHP 5.4.0 or newer.</p>
-<p>Installation via <a href="https://getcomposer.org/">Composer</a></p>
-<pre><code>composer require alterfw/hero</code></pre>
-<p>Insert into your <code>functions.php</code>:</p>
-<pre><code class="language-php">require 'vendor/autoload.php';</code></pre>
-<h2 id="license">License</h2>
-<p>The MIT License (MIT). Please see <a href="https://github.com/alterfw/ampersand/blob/master/LICENSE">License File</a> for more information.</p>
+        <h1>Dashboard customization</h1>
+        <p>Using Hero you can customize the menu labels on WordPress dashboard:</p>
+<pre><code class="language-php">use Hero\Core\Model;
+class Car extends Model {
+
+  public $labels = ["Car", "Cars"];
+
+}</code></pre>
+<p>You can also customize the icon that will appear on WordPress dashboard:</p>
+<pre><code class="language-php">use Hero\Core\Model;
+class Car extends Model {
+
+  public $icon = "dashicons-admin-home";
+
+}</code></pre>
+<p>Hero uses the <a href="https://developer.wordpress.org/resource/dashicons/#images-alt">WordPress Dashicons</a>.</p>
       </div>
       </div>
 
