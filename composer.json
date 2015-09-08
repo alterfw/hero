@@ -11,16 +11,20 @@
   "minimum-stability": "stable",
   "require": {
     "alterfw/common": "0.1.*",
-    "rilwis/meta-box": "@dev"
+    "rilwis/meta-box": "@dev",
+    "xamin/handlebars.php": "@dev",
+    "symfony/console": "^2.7"
   },
   "require-dev": {
     "phpunit/phpunit": "3.x"
   },
   "autoload": {
-    "files": [ "src/bootstrap.php"],
+    "files": [ "bootstrap/loader.php"],
     "psr-4": {
       "Hero\\Core\\": "src/Core/",
-      "Hero\\Util\\": "src/Util/"
+      "Hero\\Util\\": "src/Util/",
+      "Hero\\Console\\": "src/Console/",
+      "Hero\\Loader\\": "src/Loader/"
     }
   },
   "autoload-dev": {
@@ -30,6 +34,7 @@
   },
   "scripts": {
     "test": "HERO_ENV=TEST phpunit"
-  }
+  },
+  "bin": ["bin/hero"]
 
 }

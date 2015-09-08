@@ -25,30 +25,22 @@ example: <i class="fa fa-question-circle"></i><span>See the example theme</span>
 example_repo: https://github.com/alterfw/ampersand-example
 
 # The left menu bar
-show_menu_sub: false
-menu:
-    items:
-        creating-models:
-            text: Creating models
-            relativeUrl: docs/index.html
-        model-fields:
-            text: Setting model fields
-            relativeUrl: docs/fields.html
-        relations:
-            text: Relationships
-            relativeUrl: docs/relations.html
-        taxonomies:
-            text: Taxonomies
-            relativeUrl: docs/taxonomies.html
-        retrieving:
-            text: Retrieving data
-            relativeUrl: docs/retrieving.html
-        saving:
-            text: Saving data
-            relativeUrl: docs/saving.html
-        dashboard:
-            text: Dashboard customization
-            relativeUrl: docs/dashboard.html
-
-
-
+show_menu_sub: true
+menu_sub:
+    - title: Get Started
+      items:
+        - [/docs/index.html, Installation]
+    - title: Models
+      items:
+        - [/docs/creating/creating.html, Creating Models]
+        - [/docs/creating/fields.html, Setting model fields]
+        - [/docs/creating/relations.html, Relationships]
+        - [/docs/creating/dashboard.html, Dashboard customization]
+    - title: Operations
+      items:
+        - [/docs/operations/retrieving.html, Retrieving]
+        - [/docs/operations/saving.html, Saving]
+        - [/docs/operations/seeding.html, Seeding]
+    - title: Other features
+      items:
+        - [/docs/other/taxonomies.html, Taxonomies]

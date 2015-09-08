@@ -1,0 +1,23 @@
+#!/usr/bin/env php
+<?php
+
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+
+$pieces = explode('/', dirname(__DIR__));
+if($pieces[count($pieces) -1] == "hero") {
+  require __DIR__.'/../bootstrap/autoload.php';
+} else {
+  require __DIR__.'/../alterfw/hero/bootstrap/autoload.php';
+}
+
+use Hero\Console\SeedRunner;
+use Hero\Console\SeedCreator;
+use Hero\Console\ModelCreator;
+use Symfony\Component\Console\Application;
+
+$application = new Application();
+$application->add(new SeedRunner());
+$application->add(new SeedCreator());
+$application->add(new ModelCreator());
+$application->run();
