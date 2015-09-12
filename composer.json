@@ -33,7 +33,8 @@
     ]
   },
   "scripts": {
-    "test": "HERO_ENV=TEST phpunit"
+    "test": "HERO_ENV=TEST phpunit",
+    "open": "DIP='http://'$(docker-machine ip default); DIP+=':8080'; open $DIP"
   },
   "bin": ["bin/hero"]
 

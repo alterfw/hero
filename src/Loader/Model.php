@@ -6,8 +6,11 @@ use Alter\Common\Loader;
 class Model extends Loader {
 
 	function __construct() {
-		parent::__construct(null, ['model']);
+
+    $folder = (!defined('HERO_MODELS')) ? 'model' : HERO_MODELS;
+		parent::__construct(null, [$folder]);
 		$this->load();
+
 	}
 
 }
