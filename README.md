@@ -13,8 +13,6 @@ Hero is a library that allows you easily create Models to your WordPress theme o
 
     composer require alterfw/hero
 
-## Getting started
-
 Require the composer autoload file into your `functions.php`:
 
 ```php
@@ -34,7 +32,7 @@ Before create any pull requests make sure that all tests are passing.
 
 ### Development Environment
 
-To setup de developmente environment first download [Docker](https://www.docker.com/) and create a virtual machine:
+To setup de development environment first download [Docker](https://www.docker.com/) and create a virtual machine:
 
     docker-machine create --driver virtualbox default
     eval "$(docker-machine env default)"
