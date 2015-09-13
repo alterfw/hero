@@ -17,7 +17,7 @@ class Loader {
     if(defined('HERO_ENV') && HERO_ENV == 'TEST') require_once __DIR__.'/../test/bootstrap.php';
     if(defined('HERO_ENV') && HERO_ENV == 'CLI') {
       if(strpos(__DIR__, 'vendor') > -1) {
-        define('APPLICATION_PATH', explode('vendor', __DIR__)[0]);
+        if(!defined('APPLICATION_PATH')) define('APPLICATION_PATH', explode('vendor', __DIR__)[0]);
         define('RWMB_VER', false);
       }
     }
