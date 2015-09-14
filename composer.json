@@ -10,8 +10,8 @@
   ],
   "minimum-stability": "stable",
   "require": {
-    "alterfw/common": "0.1.*",
-    "rilwis/meta-box": "dev-master"
+    "alterfw/common": "^0.1.0",
+    "rilwis/meta-box": "^4.5.6"
   },
   "require-dev": {
     "phpunit/phpunit": "3.x"
