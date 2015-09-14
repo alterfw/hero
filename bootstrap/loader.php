@@ -15,6 +15,12 @@ class Loader {
     if(!empty($hero_env) && !defined('HERO_ENV')) define('HERO_ENV', $hero_env);
 
     if(defined('HERO_ENV') && HERO_ENV == 'TEST') require_once __DIR__.'/../test/bootstrap.php';
+    if(defined('HERO_ENV') && HERO_ENV == 'CLI') {
+      if(strpos(__DIR__, 'vendor') > -1) {
+        if(!defined('APPLICATION_PATH')) define('APPLICATION_PATH', explode('vendor', __DIR__)[0]);
+        define('RWMB_VER', false);
+      }
+    }
 
     if(!defined('HERO_ENV')) define('HERO_ENV', 'PROD');
     if(!defined('ALTER')) define('ALTER', __DIR__ . "/..");
@@ -22,13 +28,13 @@ class Loader {
     if(!defined('COMMOM_VENDOR')) define('COMMOM_VENDOR', ALTER . "/../..");
     if(!defined('APPLICATION_PATH')) define('APPLICATION_PATH', \get_template_directory());
 
-    if(!defined('RWMB_VER')) self::loadMetaBox();
+    if(!defined('RWMB_VER') || HERO_ENV != 'CLI') self::loadMetaBox();
 
     Store::set('relation_belongs_to', []);
     Store::set('relation_has_many', []);
     Store::set('models', []);
 
-    Register::models();
+    if(HERO_ENV != 'CLI') Register::models();
 
   }
 
