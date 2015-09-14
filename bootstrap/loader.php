@@ -41,13 +41,13 @@ class Loader {
   private static function loadMetaBox() {
 
     if(HERO_ENV == 'PROD') {
-      $path = explode('wp-content', realpath(COMMOM_VENDOR . "/rilwis/meta-box/"));
+      $path = explode('wp-content', realpath(COMMOM_VENDOR . "/alterfw/meta-box/"));
       $url = \get_site_url().'/wp-content'.$path[1].'/';
     } else {
       $url = 'http://localhost';
     }
 
-    \RWMB_Loader::load($url, COMMOM_VENDOR . "/rilwis/meta-box/");
+    \RWMB_Loader::load($url, COMMOM_VENDOR . "/alterfw/meta-box/");
 
     require_once RWMB_INC_DIR . 'common.php';
     require_once RWMB_INC_DIR . 'field.php';
