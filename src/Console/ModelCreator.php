@@ -34,7 +34,7 @@ class ModelCreator extends TemplateCreator {
     $name = ucfirst($input->getArgument('name'));
 
     $this->createDirectory('/model');
-    $this->render('Model', '/model/'.strtolower($name).'.php', ['name'=>$name]);
+    $this->render(__DIR__.'/templates/Model', '/model/'.strtolower($name).'.php', ['name'=>$name]);
 
     $output->writeln('<info>Created</info> '.APPLICATION_PATH.'/model/'.strtolower($name).'.php');
 
