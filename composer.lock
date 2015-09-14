@@ -4,27 +4,32 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "df632eb0cba718516b9f7a7dd7f81011",
+    "hash": "4de629339df5673d62931e3968bb899b",
     "packages": [
         {
             "name": "alterfw/common",
-            "version": "v0.1.2",
+            "version": "v0.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/alterfw/common.git",
-                "reference": "300c7e1a12c2869f3aad1b5d309028811324df8d"
+                "reference": "d0a6e967d0df615c569dc188036a0f6e16e17122"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/alterfw/common/zipball/300c7e1a12c2869f3aad1b5d309028811324df8d",
-                "reference": "300c7e1a12c2869f3aad1b5d309028811324df8d",
+                "url": "https://api.github.com/repos/alterfw/common/zipball/d0a6e967d0df615c569dc188036a0f6e16e17122",
+                "reference": "d0a6e967d0df615c569dc188036a0f6e16e17122",
                 "shasum": ""
+            },
+            "require": {
+                "symfony/console": "^2.7",
+                "xamin/handlebars.php": "@dev"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Alter\\Common\\": "src/",
-                    "Alter\\Common\\Util\\": "src/util/"
+                    "Alter\\Common\\Util\\": "src/util/",
+                    "Alter\\Common\\Console\\": "src/console/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -38,7 +43,7 @@
                 }
             ],
             "description": "Common classes to all Alter projects",
-            "time": "2015-08-16 00:42:33"
+            "time": "2015-09-14 00:04:27"
         },
         {
             "name": "rilwis/meta-box",
@@ -46,12 +51,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/rilwis/meta-box.git",
-                "reference": "bec5cf71131434fc3d4bb29667c9a1d12dbaa66b"
+                "reference": "26df56cbc1305a24a07e9901715d74116dec2629"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rilwis/meta-box/zipball/bec5cf71131434fc3d4bb29667c9a1d12dbaa66b",
-                "reference": "bec5cf71131434fc3d4bb29667c9a1d12dbaa66b",
+                "url": "https://api.github.com/repos/rilwis/meta-box/zipball/26df56cbc1305a24a07e9901715d74116dec2629",
+                "reference": "26df56cbc1305a24a07e9901715d74116dec2629",
                 "shasum": ""
             },
             "type": "library",
@@ -90,20 +95,20 @@
                 "wordpress-plugin",
                 "wp-admin"
             ],
-            "time": "2015-08-25 03:15:22"
+            "time": "2015-09-07 03:18:44"
         },
         {
             "name": "symfony/console",
-            "version": "v2.7.3",
+            "version": "v2.7.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/Console.git",
-                "reference": "d6cf02fe73634c96677e428f840704bfbcaec29e"
+                "url": "git@github.com:symfony/Console.git",
+                "reference": "f1f7376766394f409b9b33a57a5675a52f8aad93"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/d6cf02fe73634c96677e428f840704bfbcaec29e",
-                "reference": "d6cf02fe73634c96677e428f840704bfbcaec29e",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/f1f7376766394f409b9b33a57a5675a52f8aad93",
+                "reference": "f1f7376766394f409b9b33a57a5675a52f8aad93",
                 "shasum": ""
             },
             "require": {
@@ -147,20 +152,20 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2015-07-28 15:18:12"
+            "time": "2015-09-03 11:40:38"
         },
         {
             "name": "xamin/handlebars.php",
-            "version": "dev-master",
+            "version": "v0.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/XaminProject/handlebars.php.git",
-                "reference": "5e1db1d1c7969fae32eab331a3b4d9b93257a709"
+                "reference": "a47d7e0fb26d1da08475c1ffa40a86159a78ba69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/XaminProject/handlebars.php/zipball/5e1db1d1c7969fae32eab331a3b4d9b93257a709",
-                "reference": "5e1db1d1c7969fae32eab331a3b4d9b93257a709",
+                "url": "https://api.github.com/repos/XaminProject/handlebars.php/zipball/a47d7e0fb26d1da08475c1ffa40a86159a78ba69",
+                "reference": "a47d7e0fb26d1da08475c1ffa40a86159a78ba69",
                 "shasum": ""
             },
             "require-dev": {
@@ -189,7 +194,7 @@
             ],
             "description": "Handlebars processor for php",
             "homepage": "https://github.com/XaminProject/handlebars.php",
-            "time": "2015-08-06 22:16:36"
+            "time": "2015-07-14 18:08:50"
         }
     ],
     "packages-dev": [
@@ -557,16 +562,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.7.3",
+            "version": "v2.7.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "71340e996171474a53f3d29111d046be4ad8a0ff"
+                "reference": "2dc7b06c065df96cc686c66da2705e5e18aef661"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/71340e996171474a53f3d29111d046be4ad8a0ff",
-                "reference": "71340e996171474a53f3d29111d046be4ad8a0ff",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/2dc7b06c065df96cc686c66da2705e5e18aef661",
+                "reference": "2dc7b06c065df96cc686c66da2705e5e18aef661",
                 "shasum": ""
             },
             "require": {
@@ -602,14 +607,13 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2015-07-28 14:07:07"
+            "time": "2015-08-24 07:13:45"
         }
     ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "rilwis/meta-box": 20,
-        "xamin/handlebars.php": 20
+        "rilwis/meta-box": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

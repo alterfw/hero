@@ -9,7 +9,7 @@
 namespace Hero\Console;
 
 
-use Hero\Console\TemplateCreator;
+use Alter\Common\Console\TemplateCreator;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
