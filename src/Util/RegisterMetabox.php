@@ -62,8 +62,17 @@ class RegisterMetabox {
 
         if(!empty($content['if']) && $post){
           $condition = $content['if'];
-          eval('$valid = $post->post_'.$condition[0].' '.$condition[1].' "'.$condition[2].'";');
-          if(!$valid) continue;
+
+          if(is_array($condition)) {
+            eval('$valid = $post->post_'.$condition[0].' '.$condition[1].' "'.$condition[2].'";');
+            if(!$valid) continue;
+          } else if(is_callable($condition)) {
+            $valid = call_user_func_array($condition, [$post]);
+            if(!$valid) continue;
+          } else {
+            throw new \Exception("Invalid Argument for conditional field, please provide an array or closure");
+          }
+
         }
 
         if(!in_array($key, $wp_fields)){
