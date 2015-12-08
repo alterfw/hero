@@ -242,7 +242,7 @@ class Model extends Queryable implements \Serializable {
       $this->children = array();
 
       foreach($children as $child){
-        array_push($this->children, new Page($child));
+        array_push($this->children, \Page::findById($child->ID));
       }
 
     }
