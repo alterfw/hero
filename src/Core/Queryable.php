@@ -120,6 +120,8 @@ class Queryable {
       // But if is a array with the 'limit' index, too
       if(!empty($options['limit'])){
         $attrs['posts_per_page'] = $options['limit'];
+      } else {
+        $attrs['posts_per_page'] = '-1';
       }
 
       // Check if is arguments for WP_Query
