@@ -58,6 +58,9 @@ class Register {
 
     $labels = self::callStatic($model, 'getLabels');
     $icon = self::callStatic($model, 'getIcon');
+    $sizes = self::callStatic($model, 'getSizes');
+    foreach($sizes as $key => $value)
+      add_image_size($key, $value[0], $value[1], (empty($value[2]) ? false : $value[2]));
 
     Store::push('models', self::callStatic($model, '_serialize'));
 

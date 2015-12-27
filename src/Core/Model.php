@@ -90,6 +90,7 @@ class Model extends Queryable implements \Serializable {
     $post_type = strtolower(get_called_class());
     $_class = get_called_class();
 
+    $image_sizes = array_merge($this->getSizes(), ['thumbnail', 'medium', 'large', 'full']);
     $fields = $this->getFields();
     $taxonomies = $this->getTaxonomies();
 
@@ -253,16 +254,12 @@ class Model extends Queryable implements \Serializable {
 
     // Set the thumbnail
     $image = get_post_thumbnail_id($postObject->ID);
-
     $img = new \stdClass();
 
-    foreach( get_intermediate_image_sizes() as $s ){
+    foreach( $image_sizes as $s ){
       $wp_image = wp_get_attachment_image_src( $image, $s);
       $img->{$s} = $wp_image[0];
     }
-
-    $wp_image = wp_get_attachment_image_src( $image, 'full');
-    $img->full = $wp_image[0];
 
     $this->thumbnail = $img;
 
@@ -276,7 +273,8 @@ class Model extends Queryable implements \Serializable {
 
   private function getImage($postObject, $key, $value){
 
-    $retorno = array();
+    $image_sizes = array_merge($this->getSizes(), ['thumbnail', 'medium', 'large', 'full']);
+    $retorno = [];
 
     if(empty($value['multiple']) || !$value['multiple']){
 
@@ -284,13 +282,11 @@ class Model extends Queryable implements \Serializable {
 
       $img = new \stdClass();
 
-      foreach( get_intermediate_image_sizes() as $s ){
+      foreach( $image_sizes as $s ){
         $wp_image = wp_get_attachment_image_src( $image, $s);
         $img->{$s} = $wp_image[0];
       }
 
-      $wp_image = wp_get_attachment_image_src( $image, 'full');
-      $img->full = $wp_image[0];
       $img_post = get_post($image);
       $img->caption = (!empty($img_post)) ? $img_post->post_excerpt : NULL;
 
@@ -304,7 +300,7 @@ class Model extends Queryable implements \Serializable {
 
         $img = new \stdClass();
 
-        foreach( get_intermediate_image_sizes() as $s ){
+        foreach( $image_sizes as $s ){
           $wp_image = wp_get_attachment_image_src( $image, $s);
           $img->{$s} = $wp_image[0];
         }
@@ -424,11 +420,20 @@ class Model extends Queryable implements \Serializable {
     return $fields;
   }
 
+  private function _getSizes() {
+    $sizes = (empty($this->image_sizes)) ? [] : $this->image_sizes;
+    return $sizes;
+  }
+
   private function _getFields() {
     $fields = (empty($this->fields)) ? [] : $this->fields;
     $fields = $this->registerBelongs($fields);
     $fields = $this->registerHasMany($fields);
     return $fields;
+  }
+
+  public static function getSizes() {
+    return self::getInstance()->_getSizes();
   }
 
   public static function getFields() {
