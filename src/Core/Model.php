@@ -25,6 +25,10 @@ class Model extends Queryable implements \Serializable {
     }
   }
 
+  public static function saved($post_id) {
+    // Do nothing
+  }
+
   /**
    * Save the instance using WordPress API
    */
