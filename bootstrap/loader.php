@@ -67,10 +67,8 @@ class Loader {
 
 Loader::load();
 
-add_action( 'save_post', 'hero_callback' );
-
-function hero_callback($post_id) {
+add_action( 'save_post', function($post_id) {
   $className = ucfirst(get_post_type($post_id));
   if(class_exists($className))
-    call_user_func_array($className.'::saved', $post_id);
-}
+    call_user_func_array($className.'::saved', [$post_id]);
+});
