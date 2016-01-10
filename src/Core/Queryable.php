@@ -212,7 +212,11 @@ class Queryable {
 
   }
 
-  public static function find($options = null, $params = []){
+  public static function query($fields, $options = null) {
+    return self::find($options, [], $fields);
+  }
+
+  public static function find($options = null, $params = [], $fields = []){
 
     $attrs = self::buildQuery($options);
 
@@ -248,7 +252,7 @@ class Queryable {
 
         $qr->the_post();
 
-        $obj = new $klass(get_the_ID());
+        $obj = new $klass(get_the_ID(), [], $fields);
         array_push($posts, $obj);
 
       }

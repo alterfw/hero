@@ -18,10 +18,10 @@ class Model extends Queryable implements \Serializable {
    * @param bool|false $id
    * @param array $exclude_relations
    */
-  public function __construct($id = false, $exclude_relations = []) {
+  public function __construct($id = false, $exclude_relations = [], $fields = []) {
     if($id) {
       $this->id = $id;
-      $this->setup($exclude_relations);
+      $this->setup($exclude_relations, $fields);
     }
   }
 
@@ -84,7 +84,12 @@ class Model extends Queryable implements \Serializable {
 
   }
 
-  private function setup($exclude_relations = []) {
+  private function shouldMount($key, $fields) {
+    if($fields == false || empty($fields) || count($fields) == 0 || in_array($key, $fields)) return true;
+    return false;
+  }
+
+  private function setup($exclude_relations = [], $qrfields = []) {
 
     $postObject = get_post($this->id);
     $post_type = strtolower(get_called_class());
@@ -100,11 +105,13 @@ class Model extends Queryable implements \Serializable {
     // Post default properties
     foreach($postObject as $key => $value){
       $chave = str_replace('post_', '', $key);
+      if($fields == "post" || $this->shouldMount($chave, $qrfields))
       $this->{$chave} = $value;
     }
 
     // Permalink
-    $this->permalink = get_permalink($this->ID);
+    if($this->shouldMount('permalink', $qrfields))
+      $this->permalink = get_permalink($this->ID);
 
     // Default post taxonomies
     if($post_type == "post" && empty($taxonomies)){
@@ -113,15 +120,19 @@ class Model extends Queryable implements \Serializable {
 
     // Author
     $author = new \stdClass();
+    if($this->shouldMount('author', $qrfields))
     foreach(array('ID', 'display_name', 'nickname', 'first_name', 'last_name', 'description', 'email') as $field){
       $author->{$field} = get_the_author_meta( $field, $this->author );
     }
 
+    if($this->shouldMount('author', $qrfields))
     $this->author = $author;
+
+    if($post_type == "post" || $this->shouldMount('content', $qrfields))
     $this->content = apply_filters('the_content', $this->content);
 
     // Terms
-    if( !empty($taxonomies))
+    if( !empty($taxonomies) && $this->shouldMount('taxonomies', $qrfields))
 
       foreach($taxonomies as $taxonomy){
 
@@ -142,7 +153,7 @@ class Model extends Queryable implements \Serializable {
 
       $is_multiple = (!empty($value['multiple'])  && $value['multiple']);
 
-      if(!in_array($key, $modelDefaultFields)){
+      if(!in_array($key, $modelDefaultFields) && $this->shouldMount($key, $qrfields)){
 
         if($value['type'] !== 'image' && $value['type'] !== 'file'){
 
@@ -180,6 +191,7 @@ class Model extends Queryable implements \Serializable {
     // Relations
 
     $has_many = Store::get('relation_has_many');
+    if($this->shouldMount('relations', $qrfields))
     foreach($has_many as $many){
       if($many['target'] == $post_type && !in_array($many['model'], $exclude_relations)){
         $manyqr = new \WP_Query([
@@ -214,7 +226,7 @@ class Model extends Queryable implements \Serializable {
     }
 
     $belongs_to = Store::get('relation_belongs_to');
-    //var_dump($belongs_to);
+    if($this->shouldMount('relations', $qrfields))
     foreach($belongs_to as $bel){
       if($bel['target'] == $post_type  && !in_array($bel['model'], $exclude_relations)){
         $belqr = new \WP_Query([
@@ -237,7 +249,7 @@ class Model extends Queryable implements \Serializable {
 
 
     // Include subpages
-    if($post_type == 'page'){
+    if($post_type == 'page' && $this->shouldMount('children', $qrfields)){
 
       $my_wp_query = new \WP_Query();
       $all_wp_pages = $my_wp_query->query(array('post_type' => 'page'));
@@ -253,15 +265,17 @@ class Model extends Queryable implements \Serializable {
     }
 
     // Set the thumbnail
-    $image = get_post_thumbnail_id($postObject->ID);
-    $img = new \stdClass();
+    if($this->shouldMount('thumbnail', $qrfields)) {
+      $image = get_post_thumbnail_id($postObject->ID);
+      $img = new \stdClass();
 
-    foreach( $image_sizes as $s ){
-      $wp_image = wp_get_attachment_image_src( $image, $s);
-      $img->{$s} = $wp_image[0];
+      foreach( $image_sizes as $s ){
+        $wp_image = wp_get_attachment_image_src( $image, $s);
+        $img->{$s} = $wp_image[0];
+      }
+
+      $this->thumbnail = $img;
     }
-
-    $this->thumbnail = $img;
 
   }
 

@@ -96,6 +96,23 @@ $cars = Car::paginate();
 
 Returns an paginated array of items
 
+### query($fields, $options)
+
+* $fields: String|Array
+* $options: Array of [WP_Query](https://codex.wordpress.org/Class_Reference/WP_Query) arguments
+
+Queries in same way as the `find()` method but specifying which fields should be returned in the *Model* object.
+
+The `$fields` parameter could be:
+
+* `"post"` for the default Wordpress object (title, guid, etc)
+* An array of fields, which some of them could be grouped by an alias:
+    * `author`: Returns all the Author object
+    * `taxonomies`: Returns all the taxonomies
+    * `relations`: Returns all the relations (belongs_to and has_many)
+    * `children`: Returns all the children pages (in case of the Page post type)
+
+
 ## Automagic find() methods
 
 Hero allows you to use automagic *find()* methods according to you custom fields.
