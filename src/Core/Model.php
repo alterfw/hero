@@ -105,7 +105,7 @@ class Model extends Queryable implements \Serializable {
     // Post default properties
     foreach($postObject as $key => $value){
       $chave = str_replace('post_', '', $key);
-      if($fields == "post" || $this->shouldMount($chave, $qrfields))
+      if($this->shouldMount("post", $qrfields) || $this->shouldMount($chave, $qrfields))
       $this->{$chave} = $value;
     }
 

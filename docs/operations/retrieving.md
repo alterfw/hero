@@ -103,10 +103,8 @@ Returns an paginated array of items
 
 Queries in same way as the `find()` method but specifying which fields should be returned in the *Model* object.
 
-The `$fields` parameter could be:
-
-* `"post"` for the default Wordpress object (title, guid, etc)
-* An array of fields, which some of them could be grouped by an alias:
+The `$fields` parameter should be an array of fields, which some of them could be grouped by an alias:
+    * `post` for the default Wordpress object (title, guid, etc)
     * `author`: Returns all the Author object
     * `taxonomies`: Returns all the taxonomies
     * `relations`: Returns all the relations (belongs_to and has_many)
