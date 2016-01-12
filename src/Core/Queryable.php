@@ -85,6 +85,7 @@ class Queryable {
       }
 
       $qr[$key] = $findvalue;
+      $qr['posts_per_page'] = '-1';
 
       return self::find($qr);
 
