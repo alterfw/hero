@@ -435,7 +435,7 @@ class Model extends Queryable implements \Serializable {
   }
 
   private function _getSizes() {
-    $sizes = (empty($this->image_sizes)) ? [] : $this->image_sizes;
+    $sizes = (empty($this->image_sizes)) ? get_intermediate_image_sizes() : $this->image_sizes;
     return $sizes;
   }
 
