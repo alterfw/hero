@@ -95,7 +95,8 @@ class Model extends Queryable implements \Serializable {
     $post_type = strtolower(get_called_class());
     $_class = get_called_class();
 
-    $image_sizes = array_merge($this->getSizes(), ['thumbnail', 'medium', 'large', 'full']);
+    $image_sizes = array_merge(['thumbnail', 'medium', 'large', 'full'], $this->getSizes());
+
     $fields = $this->getFields();
     $taxonomies = $this->getTaxonomies();
 
@@ -435,7 +436,13 @@ class Model extends Queryable implements \Serializable {
   }
 
   private function _getSizes() {
-    $sizes = (empty($this->image_sizes)) ? get_intermediate_image_sizes() : $this->image_sizes;
+    $sizes = get_intermediate_image_sizes();
+    foreach($sizes as $index => $size) if(is_int($size)) unset($sizes[$index]);
+    if(!empty($this->image_sizes)) {
+      $arr = [];
+      foreach($this->image_sizes as $key=>$value) array_push($arr, $key);
+      $sizes = $arr;
+    }
     return $sizes;
   }
 
