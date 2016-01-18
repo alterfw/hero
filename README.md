@@ -23,7 +23,7 @@ And Hero will be ready!
 
 ## Documentation
 
-You can read more about how Ampersand works in the [documentation page](http://alterfw.github.io/ampersand/docs/).
+You can read more about how Ampersand works in the [documentation page](http://alterfw.github.io/hero).
 
 ## Contributing
 
