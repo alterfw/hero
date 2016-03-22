@@ -42,8 +42,11 @@ class Queryable {
     }
 
     $custom_fields = [];
-    foreach($model['fields'] as $field => $value){
-      if(is_array($value)) $custom_fields[$field] = $value;
+
+    if(isset($model['fields'])) {
+      foreach($model['fields'] as $field => $value){
+        if(is_array($value)) $custom_fields[$field] = $value;
+      }
     }
 
     foreach($model['relations']['has_many'] as $many) {
