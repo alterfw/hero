@@ -1,0 +1,14 @@
+<?php
+
+use Hero\Core\Seeder;
+
+class {{name}}Seeder implements Seeder {
+
+  public function run() {
+
+    $item = new {{name}}();
+    $item->save();
+
+  }
+
+}

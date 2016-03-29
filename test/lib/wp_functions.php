@@ -55,3 +55,11 @@ function get_query_var($var) {
 function get_option($key) {
   return 0;
 }
+
+function get_intermediate_image_sizes() {
+  return ['medium', 'thumbnail', 'large', 'full'];
+}
+
+function add_image_size($name, $size, $crop) {
+  // do nothing
+}

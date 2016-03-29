@@ -10,17 +10,20 @@
   ],
   "minimum-stability": "stable",
   "require": {
-    "alterfw/common": "0.1.*",
-    "rilwis/meta-box": "dev-master"
+    "php": ">=5.6.0",
+    "alterfw/common": "^0.1.0",
+    "alterfw/meta-box": "^4.5.6"
   },
   "require-dev": {
-    "phpunit/phpunit": "3.x"
+    "phpunit/phpunit": "5.x"
   },
   "autoload": {
-    "files": [ "src/bootstrap.php"],
+    "files": [ "bootstrap/loader.php"],
     "psr-4": {
       "Hero\\Core\\": "src/Core/",
-      "Hero\\Util\\": "src/Util/"
+      "Hero\\Util\\": "src/Util/",
+      "Hero\\Console\\": "src/Console/",
+      "Hero\\Loader\\": "src/Loader/"
     }
   },
   "autoload-dev": {
@@ -29,7 +32,9 @@
     ]
   },
   "scripts": {
-    "test": "HERO_ENV=TEST phpunit"
-  }
+    "test": "HERO_ENV=TEST ./vendor/bin/phpunit -c phpunit.xml --stderr",
+    "open": "DIP='http://'$(docker-machine ip default); DIP+=':8080'; open $DIP"
+  },
+  "bin": ["bin/hero"]
 
 }

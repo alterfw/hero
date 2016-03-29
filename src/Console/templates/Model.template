@@ -1,0 +1,11 @@
+<?php
+
+use Hero\Core\Model;
+
+class {{name}} extends Model {
+
+  public $fields = [
+    'title' => true
+  ];
+
+}

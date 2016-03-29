@@ -1,3 +1,7 @@
 /vendor/
 .couscous
 .idea
+/functions.php
+/index.php
+/style.css
+composer.lock

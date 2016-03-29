@@ -42,8 +42,11 @@ class Queryable {
     }
 
     $custom_fields = [];
-    foreach($model['fields'] as $field => $value){
-      if(is_array($value)) $custom_fields[$field] = $value;
+
+    if(isset($model['fields'])) {
+      foreach($model['fields'] as $field => $value){
+        if(is_array($value)) $custom_fields[$field] = $value;
+      }
     }
 
     foreach($model['relations']['has_many'] as $many) {
@@ -85,6 +88,7 @@ class Queryable {
       }
 
       $qr[$key] = $findvalue;
+      $qr['posts_per_page'] = '-1';
 
       return self::find($qr);
 
@@ -120,6 +124,8 @@ class Queryable {
       // But if is a array with the 'limit' index, too
       if(!empty($options['limit'])){
         $attrs['posts_per_page'] = $options['limit'];
+      } else {
+        $attrs['posts_per_page'] = '-1';
       }
 
       // Check if is arguments for WP_Query
@@ -166,7 +172,7 @@ class Queryable {
   }
 
   public static function all() {
-    self::find();
+    return self::find();
   }
 
   public static function findBySlug($slug) {
@@ -210,7 +216,11 @@ class Queryable {
 
   }
 
-  public static function find($options = null, $params = []){
+  public static function query($fields, $options = null) {
+    return self::find($options, [], $fields);
+  }
+
+  public static function find($options = null, $params = [], $fields = []){
 
     $attrs = self::buildQuery($options);
 
@@ -222,8 +232,10 @@ class Queryable {
       $attrs['limit'] = -1;
     }
 
+    $klass = ucfirst(self::getType());
+
     if(!empty($attrs['p'])){
-      return new Post($attrs['p'], self::getType());
+      return new $klass($attrs['p']);
     }
 
     if(!empty($params['paginate_limit']))
@@ -244,7 +256,7 @@ class Queryable {
 
         $qr->the_post();
 
-        $obj = new Post(get_the_ID(), self::getType());
+        $obj = new $klass(get_the_ID(), [], $fields);
         array_push($posts, $obj);
 
       }

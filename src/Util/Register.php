@@ -7,7 +7,7 @@
  */
 
 namespace Hero\Util;
-use Hero\Core\ModelLoader;
+use Hero\Loader\Model;
 use Hero\Util\Store;
 
 class Register {
@@ -34,7 +34,7 @@ class Register {
 
     add_action( 'init', array('\Hero\Util\Register', 'post_types'), 0 );
     self::getMeta()->register();
-    new ModelLoader();
+    new Model();
 
     foreach(get_declared_classes() as $class){
       if(get_parent_class($class) == 'Hero\Core\Model') self::model($class);
@@ -58,6 +58,9 @@ class Register {
 
     $labels = self::callStatic($model, 'getLabels');
     $icon = self::callStatic($model, 'getIcon');
+    $sizes = self::callStatic($model, 'getSizes');
+    foreach($sizes as $key => $value)
+      add_image_size($key, $value[0], $value[1], (empty($value[2]) ? false : $value[2]));
 
     Store::push('models', self::callStatic($model, '_serialize'));
 

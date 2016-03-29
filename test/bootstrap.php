@@ -11,3 +11,5 @@ define('ALTER', __DIR__. '/../');
 define('ALTER_VENDOR', __DIR__. '/../vendor/alterfw');
 define('COMMOM_VENDOR', ALTER . "vendor");
 define('APPLICATION_PATH', __DIR__. '/fixtures');
+
+require __DIR__."/../vendor/autoload.php";
