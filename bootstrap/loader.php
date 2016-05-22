@@ -67,8 +67,10 @@ class Loader {
 
 Loader::load();
 
-add_action( 'save_post', function($post_id) {
-  $className = ucfirst(get_post_type($post_id));
-  if(class_exists($className))
-    call_user_func_array($className.'::saved', [$post_id]);
-});
+if(HERO_ENV != 'CLI' && !getenv('ALTER_CLI_RUNNER')) {
+  add_action( 'save_post', function($post_id) {
+    $className = ucfirst(get_post_type($post_id));
+    if(class_exists($className))
+      call_user_func_array($className.'::saved', [$post_id]);
+  });
+}

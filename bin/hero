@@ -5,6 +5,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
 define('HERO_ENV', 'CLI');
+define('ALTER_CLI_RUNNER', true);
 
 if(strpos(__DIR__, 'vendor') > -1) {
   require __DIR__.'/../../../autoload.php';
