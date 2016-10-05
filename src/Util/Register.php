@@ -69,6 +69,7 @@ class Register {
     $icon = (empty($icon)) ? 'dashicons-admin-post' : $icon;
     $tax = self::callStatic($model, 'getTaxonomies');
     $fields = self::callStatic($model, 'getFields');
+    $caps = self::callStatic($model, 'getCaps');
 
     $supports = array();
     $wp_fields = array(
@@ -92,6 +93,29 @@ class Register {
 
     $capability_type = 'page';
     $capabilities = array();
+
+    $capability_type = 'page';
+    $capabilities = [];
+
+    if($caps) {
+      $capability_type = strtolower($model);
+      $capabilities = [
+        'edit_post' => str_replace('post', strtolower($model), 'edit_post'),
+        'read_post' => str_replace('post', strtolower($model), 'read_post'),
+        'delete_post' => str_replace('post', strtolower($model), 'delete_post'),
+        'edit_posts' => str_replace('post', strtolower($model), 'edit_posts'),
+        'edit_others_posts' => str_replace('post', strtolower($model), 'edit_others_posts'),
+        'publish_posts' => str_replace('post', strtolower($model), 'publish_posts'),
+        'read_private_posts' => str_replace('post', strtolower($model), 'read_private_posts'),
+        'delete_posts' => str_replace('post', strtolower($model), 'delete_posts'),
+        'delete_private_posts' => str_replace('post', strtolower($model), 'delete_private_posts'),
+        'delete_published_posts' => str_replace('post', strtolower($model), 'delete_published_posts'),
+        'delete_others_posts' => str_replace('post', strtolower($model), 'delete_others_posts'),
+        'edit_private_posts' => str_replace('post', strtolower($model), 'edit_private_posts'),
+        'edit_published_posts' => str_replace('post', strtolower($model), 'edit_published_posts'),
+        'edit_posts' => str_replace('post', strtolower($model), 'edit_posts')
+      ];
+    } 
 
     $labels = array(
       'name'                => \__($plural),
