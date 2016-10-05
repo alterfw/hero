@@ -461,6 +461,16 @@ class Model extends Queryable implements \Serializable {
     return self::getInstance()->_getFields();
   }
 
+  private function _getCapabilities() {
+    if(!isset($this->caps))
+      return false;
+    return $this->caps;
+  }
+
+  public static function getCapabilities() {
+    return self::getInstance()-> _getCapabilities();
+  }
+
   private function _getRelations() {
     $belongs_to = (!empty($this->belongs_to)) ? $this->belongs_to : [];
     $has_many = (!empty($this->has_many)) ? $this->has_many : [];

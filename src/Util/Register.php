@@ -69,6 +69,7 @@ class Register {
     $icon = (empty($icon)) ? 'dashicons-admin-post' : $icon;
     $tax = self::callStatic($model, 'getTaxonomies');
     $fields = self::callStatic($model, 'getFields');
+    $capabilities = self::callStatic($model, 'getCapabilities');
 
     $supports = array();
     $wp_fields = array(
@@ -92,6 +93,19 @@ class Register {
 
     $capability_type = 'page';
     $capabilities = array();
+
+    $capability_type = 'page';
+    $capabilities = [];
+
+    if($capabilities) {
+      $theCapabilities = get_post_type_object('post');
+      $capability_type = strtolower($model);
+      $capabilities = [];
+      foreach ($theCapabilities->cap as $key) {
+        $capabilities[$key] = str_replace('post', $capability_type, $key); 
+
+      }
+    } 
 
     $labels = array(
       'name'                => \__($plural),
