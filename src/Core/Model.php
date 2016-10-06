@@ -461,13 +461,13 @@ class Model extends Queryable implements \Serializable {
     return self::getInstance()->_getFields();
   }
 
-  private function _getCaps() {
+  private function _getCapabilities() {
     if(!isset($this->caps))
       return false;
     return $this->caps;
   }
 
-  public static function getCaps() {
+  public static function getCapabilities() {
     return self::getInstance()->_getCaps();
   }
 
