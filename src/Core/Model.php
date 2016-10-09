@@ -468,7 +468,7 @@ class Model extends Queryable implements \Serializable {
   }
 
   public static function getCapabilities() {
-    return self::getInstance()->_getCaps();
+    return self::getInstance()-> _getCapabilities();
   }
 
   private function _getRelations() {

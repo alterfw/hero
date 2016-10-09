@@ -101,7 +101,6 @@ class Register {
       $theCapabilities = get_post_type_object('post');
       $capability_type = strtolower($model);
       $capabilities = [];
-
       foreach ($theCapabilities->cap as $key) {
         $capabilities[$key] = str_replace('post', $capability_type, $key); 
 
