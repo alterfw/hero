@@ -70,6 +70,8 @@ class Register {
     $tax = self::callStatic($model, 'getTaxonomies');
     $fields = self::callStatic($model, 'getFields');
     $capabilities = self::callStatic($model, 'getCapabilities');
+    $rewrite = self::callStatic($model, 'getRewrite');
+    if(empty($rewrite)) $rewrite = 'hero_'.self::getType($model);
 
     $supports = array();
     $wp_fields = array(
@@ -143,7 +145,7 @@ class Register {
       'publicly_queryable'  => true,
       'capability_type'     => $capability_type,
       'capabilities'        => $capabilities,
-      'rewrite'             => array('slug' => 'hero_'.self::getType($model), 'with_front' => true)
+      'rewrite'             => array('slug' => $rewrite, 'with_front' => true)
     );
 
     if(self::getType($model) != 'page' && self::getType($model) != 'post'){

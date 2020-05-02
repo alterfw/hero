@@ -131,7 +131,8 @@ class Model extends Queryable implements \Serializable {
     $this->excerpt = get_the_excerpt($this->id);
 
     if($post_type == "post" || $this->shouldMount('content', $qrfields))
-    $this->content = apply_filters('the_content', $this->content);
+      $this->content = apply_filters('the_content', $this->content);
+
 
     // Terms
     if( !empty($taxonomies) && $this->shouldMount('taxonomies', $qrfields))
@@ -454,22 +455,20 @@ class Model extends Queryable implements \Serializable {
     return $fields;
   }
 
+  private function _getRewrite() {
+    return $this->namespace;
+  }
+
   public static function getSizes() {
     return self::getInstance()->_getSizes();
   }
 
+  public static function getRewrite() {
+    return self::getInstance()->_getRewrite();
+  }
+
   public static function getFields() {
     return self::getInstance()->_getFields();
-  }
-
-  private function _getCapabilities() {
-    if(!isset($this->caps))
-      return false;
-    return $this->caps;
-  }
-
-  public static function getCapabilities() {
-    return self::getInstance()-> _getCapabilities();
   }
 
   private function _getRelations() {
