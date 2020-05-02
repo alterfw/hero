@@ -128,6 +128,7 @@ class Model extends Queryable implements \Serializable {
 
     if($this->shouldMount('author', $qrfields))
     $this->author = $author;
+    $this->excerpt = get_the_excerpt($this->id);
 
     if($post_type == "post" || $this->shouldMount('content', $qrfields))
     $this->content = apply_filters('the_content', $this->content);
