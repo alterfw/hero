@@ -31,7 +31,7 @@ class Queryable {
 
     $model = self::getModel();
     $qr = array();
-    $non_custom_allowed = array('id', 'status', 'category', 'author', 'date');
+    $non_custom_allowed = array('id', 'status', 'category', 'author', 'date', 'slug');
 
     $findvalue = $arguments[0];
 
@@ -75,6 +75,10 @@ class Queryable {
 
         case 'category':
           $key = 'cat';
+          break;
+
+        case 'slug':
+          $key = 'name';
           break;
 
         case 'author':
